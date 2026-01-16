@@ -13,8 +13,8 @@ export default function Footer() {
       <div className="w-full md:w-10/12 mx-auto px-4 md:px-8 relative z-10">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12 mb-16">
           <div className="space-y-6">
-            <h2 className="text-xl md:text-2xl font-bold tracking-tight text-gray-900 dark:text-white">
-              Meal<span className="text-[#FFB200]">Mate</span>
+            <h2 className="text-xl md:text-2xl font-bold tracking-tight text-[#FFB200] dark:text-white">
+              Meal <span className="text-black">Mate</span>
             </h2>
             <p className="text-gray-600 dark:text-gray-400 leading-relaxed max-w-xs font-medium">
               MealMate is your premium smart digital food menu platform. We bridge the gap between delicious dishes and hungry souls with an elegant digital experience.

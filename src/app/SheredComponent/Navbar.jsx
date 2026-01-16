@@ -6,11 +6,12 @@ import Link from "next/link";
 
 export default function Navbar() {
   return (
-    <nav className="h-20 flex items-center justify-between w-full md:w-10/12 px-2 md:px-8 mx-auto">
+   <div className="bg-gray-950">
+     <nav className="h-20 flex items-center  text-gray-100 justify-between w-full md:w-10/12 px-2 md:px-8 mx-auto">
       
       <div className="flex items-center gap-1.5">
         <Image src={logo} alt="Village Chef" className="w-7 h-7" />
-        <h1  className="font-semibold text-2xl">Meal<span className="text-[#FFB200]">Mate</span></h1>
+        <h1  className="font-semibold text-2xl text-[#FFB200]">Meal <span className="text-white">Mate</span></h1>
       </div>
       <div className="flex items-center gap-6">
         <ul className="flex gap-10 font-medium">
@@ -23,10 +24,8 @@ export default function Navbar() {
           <FaArrowRight className="text-[14px]" />
           Login
         </Link>
-        <div className="bg-green-600 p-2 rounded-sm">
-            <FaShoppingCart className="text-[20px] cursor-pointer " />
-        </div>
       </div>
     </nav>
+   </div>
   );
 }
