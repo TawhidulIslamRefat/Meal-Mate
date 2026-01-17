@@ -1,0 +1,85 @@
+"use client";
+
+import { motion } from "framer-motion";
+import { useEffect, useRef } from "react";
+import gsap from "gsap";
+import Image from "next/image";
+
+const features = [
+  {
+    title: "Hygienic Food",
+    desc: "We are passionate about serving fresh, flavorful",
+    icon: "https://i.ibb.co.com/B2Dy2pmL/Whats-App-Image-2026-01-17-at-6-40-11-PM.jpg",
+    active: false,
+  },
+  {
+    title: "Fresh Environment",
+    desc: "We are passionate about serving fresh, flavorful",
+    icon: "https://i.ibb.co.com/VpNMqPbr/image2.jpg",
+    active: true,
+  },
+  {
+    title: "Skilled Chefs",
+    desc: "We are passionate about serving fresh, flavorful",
+    icon: "https://i.ibb.co.com/QvYXbjyK/Whats-App-Image-2026-01-17-at-6-40-12-PM.jpg",
+    active: false,
+  },
+  {
+    title: "Event & Party",
+    desc: "We are passionate about serving fresh, flavorful",
+    icon: "https://i.ibb.co.com/ymjJvy5L/image1.jpg",
+    active: false,
+  },
+];
+
+export default function WhyChooseUs() {
+  const cardsRef = useRef([]);
+
+  useEffect(() => {
+    gsap.from(cardsRef.current, {
+      y: 40,
+      opacity: 0,
+      duration: 0.8,
+      stagger: 0.15,
+      ease: "power3.out",
+    });
+  }, []);
+  return (
+    <section className="bg-white py-25">
+      <div className="container mx-auto px-6 text-center">
+        <p className="text-[#FFB200]  font-semibold mb-3">WHY CHOOSE US</p>
+
+        <h2 className="text-4xl lg:text-5xl font-extrabold mb-16">
+          WHY WE&apos;RE YOUR BEST CHOICE
+        </h2>
+
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+          {features.map((item, index) => (
+            <motion.div
+              key={index}
+              ref={(el) => (cardsRef.current[index] = el)}
+              whileHover={{ y: -8 }}
+              transition={{ duration: 0.3 }}
+              className="group rounded-2xl px-8 py-12 shadow-sm cursor-pointer mx-auto hover:bg-[#D61C1C] hover:text-white"
+              
+            >
+             <Image src={item.icon} alt="picture" 
+             width={220}
+             height={50}
+             className="mx-auto mb-5"
+             />
+
+              <h3 className="text-xl font-bold text-gray-900 mb-3 group-hover:text-gray-100">
+                {item.title}
+              </h3>
+
+              <p className="text-gray-500 text-sm leading-relaxed font-semibold group-hover:text-gray-100">
+                {item.desc}
+              </p>
+            </motion.div>
+          ))}
+        </div>
+      </div>
+    </section>
+  );
+}
