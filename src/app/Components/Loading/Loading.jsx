@@ -5,9 +5,8 @@ import { motion } from 'framer-motion';
 
 export default function Loading() {
   return (
-    <div className="fixed inset-0 z-[9999] flex items-center justify-center bg-slate-50 dark:bg-[#0a0a0a] transition-colors duration-500 overflow-hidden">
+    <div className="fixed inset-0 z-9999 flex items-center justify-center bg-slate-50 dark:bg-[#0a0a0a] transition-colors duration-500 overflow-hidden">
 
-      {/* Background Ambience */}
       <div className="absolute inset-0 pointer-events-none">
         <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-full h-full max-w-200 max-h-200 opacity-60 dark:opacity-100 transition-opacity duration-500">
           <motion.div
@@ -39,7 +38,6 @@ export default function Loading() {
 
       <div className="relative flex flex-col items-center">
         <div className="relative mb-8 md:mb-10">
-          {/* Main Spinner Ring */}
           <motion.div
             animate={{
               rotate: 360,
@@ -52,7 +50,6 @@ export default function Loading() {
             className="w-16 h-16 sm:w-20 sm:h-20 md:w-24 md:h-24 rounded-full border-4 border-t-[#FFB200] border-r-transparent border-b-red-600 border-l-transparent shadow-[0_0_20px_rgba(255,178,0,0.3)] dark:shadow-[0_0_30px_rgba(255,178,0,0.2)]"
           />
 
-          {/* Inner Pulsing Core */}
           <motion.div
             initial={{ scale: 0.8, opacity: 0 }}
             animate={{ scale: 1, opacity: 1 }}
@@ -76,7 +73,7 @@ export default function Loading() {
             MEAL <span className="text-[#FFB200]">MATE</span>
           </motion.h2>
 
-          {/* Loading Bar */}
+
           <div className="h-1 w-40 sm:w-56 md:w-64 bg-slate-200 dark:bg-white/10 rounded-full overflow-hidden relative transition-colors duration-300">
             <motion.div
               animate={{
@@ -87,7 +84,7 @@ export default function Loading() {
                 repeat: Infinity,
                 ease: "easeInOut",
               }}
-              className="absolute inset-0 bg-gradient-to-r from-transparent via-[#FFB200] to-transparent dark:via-red-600"
+              className="absolute inset-0 bg-linear-to-r from-transparent via-[#FFB200] to-transparent dark:via-red-600"
             />
           </div>
 
@@ -101,7 +98,6 @@ export default function Loading() {
         </div>
       </div>
 
-      {/* Texture Overlay */}
       <div className="absolute inset-0 z-0 opacity-10 dark:opacity-20 pointer-events-none">
         <div className="absolute inset-0 bg-[url('https://www.transparenttextures.com/patterns/pollen.png')] opacity-30" />
       </div>

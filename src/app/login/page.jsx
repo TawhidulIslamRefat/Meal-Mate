@@ -13,6 +13,8 @@ export default function Login() {
   const [loading, setLoading] = useState(false);
   const { signIn, setUser, signInGoogle } = useContext(AuthContext);
   const router = useRouter();
+  const MOCK_EMAIL = "tawhidulislamrefat15@gmail.com";
+  const MOCK_PASSWORD = "Refat@123";
 
   // const handleLogin = async (event) => {
   //   event.preventDefault();
@@ -52,42 +54,103 @@ export default function Login() {
 
   const handleLogin = async (event) => {
     event.preventDefault();
+    setLoading(true);
+
     const email = event.target.email.value;
     const password = event.target.password.value;
-    if (
-      email === "tawhidulislamrefat15@gmail.com" &&
-      password === "Refat@123"
-    ) {
+
+    // 🧪 MOCK LOGIN
+    if (email === MOCK_EMAIL && password === MOCK_PASSWORD) {
       document.cookie = "auth=true; path=/";
-      try {
-        const result = await signIn(email, password);
-        const user = result.user;
-        setUser(user);
-        Swal.fire({
-          position: "center",
-          icon: "success",
-          title: "Welcome Back!",
-          text: "You have successfully logged in.",
-          showConfirmButton: false,
-          timer: 1500,
-          background: "#141414",
-          color: "#fff",
-        });
-        router.push("/foods");
-      } catch (error) {
-        console.error(error);
-        Swal.fire({
-          icon: "error",
-          title: "Login Failed",
-          text: "Invalid email or password. Please try again.",
-          confirmButtonColor: "#D61C1C",
-          background: "#141414",
-          color: "#fff",
-        });
-      }
+      document.cookie = `user=${JSON.stringify({
+        name: "Admin Refat",
+        email,
+        provider: "mock",
+      })}; path=/`;
+
+      Swal.fire({
+        icon: "success",
+        title: "Mock Login Successful",
+        timer: 1500,
+        showConfirmButton: false,
+        background: "#141414",
+        color: "#fff",
+      });
+
+      window.location.href = "/foods";
+      setLoading(false);
+      return;
+    }
+
+    try {
+      const result = await signIn(email, password);
+      const user = result.user;
+
+      document.cookie = "auth=true; path=/";
+      document.cookie = `user=${JSON.stringify({
+        name: user.displayName || "Firebase User",
+        email: user.email,
+        provider: "firebase",
+      })}; path=/`;
+
+      Swal.fire({
+        icon: "success",
+        title: "Firebase Login Successful",
+        timer: 1500,
+        showConfirmButton: false,
+        background: "#141414",
+        color: "#fff",
+      });
+
       router.push("/foods");
+    } catch (error) {
+      Swal.fire({
+        icon: "error",
+        title: "Login Failed",
+        text: "Invalid credentials",
+        background: "#141414",
+        color: "#fff",
+      });
+    } finally {
+      setLoading(false);
     }
   };
+
+  // const handleLogin = async (event) => {
+  //   event.preventDefault();
+  //   const email = event.target.email.value;
+  //   const password = event.target.password.value;
+  //   if (
+  //     email === "tawhidulislamrefat15@gmail.com" &&
+  //     password === "Refat@123"
+  //   ) {
+  //     document.cookie = "auth=true; path=/";
+  //     try {
+  //       Swal.fire({
+  //         position: "center",
+  //         icon: "success",
+  //         title: "Welcome Back!",
+  //         text: "You have successfully logged in.",
+  //         showConfirmButton: false,
+  //         timer: 1500,
+  //         background: "#141414",
+  //         color: "#fff",
+  //       });
+  //       router.push("/foods");
+  //     } catch (error) {
+  //       console.error(error);
+  //       Swal.fire({
+  //         icon: "error",
+  //         title: "Login Failed",
+  //         text: "Invalid email or password. Please try again.",
+  //         confirmButtonColor: "#D61C1C",
+  //         background: "#141414",
+  //         color: "#fff",
+  //       });
+  //     }
+  //     router.push("/foods");
+  //   }
+  // };
 
   const handleGoogleLogin = async () => {
     try {

@@ -1,4 +1,4 @@
-"use client"; 
+"use client";
 
 import React, { useEffect, useState } from "react";
 import {
@@ -23,58 +23,64 @@ const AuthProvider = ({ children }) => {
   const [user, setUser] = useState(null);
   const [loading, setLoading] = useState(true);
 
-  const createUser = (email, password) => {
-    setLoading(true);
-    return createUserWithEmailAndPassword(auth, email, password);
+  const createUser = (email, password) =>
+    createUserWithEmailAndPassword(auth, email, password);
+
+  const signIn = (email, password) =>
+    signInWithEmailAndPassword(auth, email, password);
+
+  const signInGoogle = () => signInWithPopup(auth, provider);
+
+  const forgetPassword = (email) => sendPasswordResetEmail(auth, email);
+
+  const logOut = async () => {
+    document.cookie = "auth=; Max-Age=0; path=/";
+    document.cookie = "user=; Max-Age=0; path=/";
+
+    setUser(null);
+    await signOut(auth);
   };
 
-  const signIn = (email, password) => {
-    setLoading(true);
-    return signInWithEmailAndPassword(auth, email, password);
-  };
-
-  const signInGoogle = () => {
-    return signInWithPopup(auth, provider);
-  };
-
-  const forgetPassword = (email) => {
-    return sendPasswordResetEmail(auth, email);
-  };
-
-  const logOut = () => {
-    setLoading(true);
-    return signOut(auth);
-  };
-
-  const updateUser = (updatedData) => {
-    return updateProfile(auth.currentUser, updatedData);
-  };
+  const updateUser = (updatedData) =>
+    updateProfile(auth.currentUser, updatedData);
 
   useEffect(() => {
     const unsubscribe = onAuthStateChanged(auth, (currentUser) => {
-      setUser(currentUser);
+      if (currentUser) {
+        setUser(currentUser);
+      } else {
+        const cookieUser = document.cookie
+          .split("; ")
+          .find((row) => row.startsWith("user="));
+
+        if (cookieUser) {
+          setUser(JSON.parse(decodeURIComponent(cookieUser.split("=")[1])));
+        } else {
+          setUser(null);
+        }
+      }
       setLoading(false);
     });
-    return () => {
-      unsubscribe();
-    };
+
+    return () => unsubscribe();
   }, []);
 
   const authData = {
     user,
     setUser,
+    loading,
     createUser,
     signIn,
-    logOut,
-    loading,
-    setLoading,
     signInGoogle,
+    logOut,
     updateUser,
     forgetPassword,
   };
 
   return (
-    <AuthContext.Provider value={authData}>{children}</AuthContext.Provider>
+    <AuthContext.Provider value={authData}>
+      {children}
+    </AuthContext.Provider>
   );
 };
 
