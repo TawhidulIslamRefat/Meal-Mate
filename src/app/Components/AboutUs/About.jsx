@@ -6,7 +6,7 @@ import Image from "next/image";
 import { useRouter } from "next/navigation";
 
 
-export default function About() {
+export default function AboutUs() {
   const router = useRouter();
   const imageRef = useRef(null);
 
