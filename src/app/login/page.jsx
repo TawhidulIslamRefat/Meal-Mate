@@ -5,8 +5,8 @@ import { Eye, EyeOff, Mail, Lock, LogIn, ChevronLeft } from "lucide-react";
 import { useContext, useState } from "react";
 import { useRouter } from "next/navigation";
 import Swal from "sweetalert2";
-import { AuthContext } from "../Context/AuthContext";
 import { motion } from "framer-motion";
+import { AuthContext } from "@/Context/AuthContext";
 
 export default function Login() {
   const [showPassword, setShowPassword] = useState(false);
@@ -16,41 +16,6 @@ export default function Login() {
   const MOCK_EMAIL = "tawhidulislamrefat15@gmail.com";
   const MOCK_PASSWORD = "Refat@123";
 
-  // const handleLogin = async (event) => {
-  //   event.preventDefault();
-  //   setLoading(true);
-  //   const email = event.target.email.value;
-  //   const password = event.target.password.value;
-
-  //   try {
-  //     const result = await signIn(email, password);
-  //     const user = result.user;
-  //     setUser(user);
-  //     Swal.fire({
-  //       position: "center",
-  //       icon: "success",
-  //       title: "Welcome Back!",
-  //       text: "You have successfully logged in.",
-  //       showConfirmButton: false,
-  //       timer: 1500,
-  //       background: "#141414",
-  //       color: "#fff",
-  //     });
-  //     router.push("/foods");
-  //   } catch (error) {
-  //     console.error(error);
-  //     Swal.fire({
-  //       icon: "error",
-  //       title: "Login Failed",
-  //       text: "Invalid email or password. Please try again.",
-  //       confirmButtonColor: "#D61C1C",
-  //       background: "#141414",
-  //       color: "#fff",
-  //     });
-  //   } finally {
-  //     setLoading(false);
-  //   }
-  // };
 
   const handleLogin = async (event) => {
     event.preventDefault();
@@ -59,7 +24,6 @@ export default function Login() {
     const email = event.target.email.value;
     const password = event.target.password.value;
 
-    // 🧪 MOCK LOGIN
     if (email === MOCK_EMAIL && password === MOCK_PASSWORD) {
       document.cookie = "auth=true; path=/";
       document.cookie = `user=${JSON.stringify({

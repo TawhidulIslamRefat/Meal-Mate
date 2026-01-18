@@ -1,7 +1,7 @@
 "use client";
 import React from "react";
 import Image from "next/image";
-import image from "../../../assets/food img.png";
+import image from "../../assets/food img.png";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
 

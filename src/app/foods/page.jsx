@@ -2,9 +2,18 @@
 
 import { useState, useEffect, useRef, useCallback } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { Search, Filter, ArrowUpDown, ChevronDown, Utensils, Zap, Star } from "lucide-react";
-import Loading from "../Components/Loading/Loading";
-import FoodCard from "../Components/FoodCard/FoodCard";
+import {
+  Search,
+  Filter,
+  ArrowUpDown,
+  ChevronDown,
+  Utensils,
+  Zap,
+  Star,
+} from "lucide-react";
+import Loading from "@/Components/Loading/Loading";
+import FoodCard from "@/Components/FoodCard/FoodCard";
+
 
 export default function ItemList() {
   const [search, setSearch] = useState("");
@@ -22,7 +31,9 @@ export default function ItemList() {
   useEffect(() => {
     const fetchFoods = async () => {
       try {
-        const res = await fetch("https://meal-mate-server-seven.vercel.app/foods");
+        const res = await fetch(
+          "https://meal-mate-server-seven.vercel.app/foods",
+        );
         const data = await res.json();
         setFoods(data);
         setLoading(false);
@@ -36,7 +47,9 @@ export default function ItemList() {
 
   const processedFoods = foods
     .filter((food) => {
-      const matchesSearch = food.name.toLowerCase().includes(search.toLowerCase());
+      const matchesSearch = food.name
+        .toLowerCase()
+        .includes(search.toLowerCase());
       const matchesCategory = category === "" || food.category === category;
       return matchesSearch && matchesCategory;
     })
@@ -76,18 +89,20 @@ export default function ItemList() {
       });
       if (node) observer.current.observe(node);
     },
-    [loading, hasMore, loadMore]
+    [loading, hasMore, loadMore],
   );
 
   if (loading) return <Loading />;
 
   return (
     <div className="min-h-screen bg-gray-100 dark:bg-[#050505] text-slate-900 dark:text-white selection:bg-[#FFB200]/30 transition-colors duration-500">
-
       <section className="relative h-[55vh] md:h-[60vh] flex items-center justify-center overflow-hidden">
         <div
           className="absolute inset-0 bg-cover bg-center brightness-[0.8] dark:brightness-[0.4] scale-105 transition-all duration-700"
-          style={{ backgroundImage: "url('https://images.unsplash.com/photo-1504674900247-0877df9cc836?q=80&w=2070&auto=format&fit=crop')" }}
+          style={{
+            backgroundImage:
+              "url('https://images.unsplash.com/photo-1504674900247-0877df9cc836?q=80&w=2070&auto=format&fit=crop')",
+          }}
         />
         <div className="absolute inset-0 bg-linear-to-b from-white/20 via-slate-30/30 to-gray-200 dark:from-black/30 dark:via-black/50 dark:to-[#050505]" />
 
@@ -101,7 +116,11 @@ export default function ItemList() {
               Exquisite Flavors
             </span>
             <h1 className="text-3xl sm:text-5xl md:text-7xl font-black  uppercase mb-6 text-slate-900 dark:text-white drop-shadow-sm">
-              The <span className="text-transparent bg-clip-text bg-linear-to-r from-[#FFB200] to-orange-500">Culinary</span> <br className="hidden md:block" />
+              The{" "}
+              <span className="text-transparent bg-clip-text bg-linear-to-r from-[#FFB200] to-orange-500">
+                Culinary
+              </span>{" "}
+              <br className="hidden md:block" />
               Collection
             </h1>
             <p className="max-w-md md:max-w-xl mx-auto text-slate-800 dark:text-gray-300 font-bold text-base md:text-lg italic">
@@ -119,7 +138,10 @@ export default function ItemList() {
           className="w-full md:w-11/12 lg:w-10/12 mx-auto bg-white/80 dark:bg-white/5 backdrop-blur-2xl border border-white/20 dark:border-white/10 rounded-4xl p-4 md:p-6 shadow-2xl flex flex-col lg:flex-row gap-4 items-center ring-1 ring-slate-900/5 dark:ring-0"
         >
           <div className="relative w-full grow group">
-            <Search className="absolute left-5 top-1/2 -translate-y-1/2 text-slate-400 dark:text-gray-500 group-focus-within:text-[#FFB200] transition-colors" size={20} />
+            <Search
+              className="absolute left-5 top-1/2 -translate-y-1/2 text-slate-400 dark:text-gray-500 group-focus-within:text-[#FFB200] transition-colors"
+              size={20}
+            />
             <input
               type="text"
               placeholder="Search by flavor, name, or ingredient..."
@@ -131,32 +153,68 @@ export default function ItemList() {
 
           <div className="flex flex-col sm:flex-row gap-4 w-full lg:w-auto">
             <div className="relative w-full sm:w-56 group">
-              <Filter className="absolute left-5 top-1/2 -translate-y-1/2 text-slate-400 dark:text-gray-500 group-focus-within:text-[#FFB200] transition-colors" size={18} />
+              <Filter
+                className="absolute left-5 top-1/2 -translate-y-1/2 text-slate-400 dark:text-gray-500 group-focus-within:text-[#FFB200] transition-colors"
+                size={18}
+              />
               <select
                 onChange={(e) => setCategory(e.target.value)}
                 className="w-full bg-slate-100 dark:bg-black/20 border-none rounded-2xl pl-12 pr-10 py-4 text-slate-900 dark:text-white appearance-none focus:ring-2 focus:ring-[#FFB200] transition-all font-black uppercase text-[10px] tracking-widest cursor-pointer"
               >
-                <option value="" className="bg-white dark:bg-[#141414]">All Cuisines</option>
-                <option value="Pizza" className="bg-white dark:bg-[#141414]">Pizza</option>
-                <option value="Snacks" className="bg-white dark:bg-[#141414]">Snacks</option>
-                <option value="Drinks" className="bg-white dark:bg-[#141414]">Drinks</option>
-                <option value="Desserts" className="bg-white dark:bg-[#141414]">Desserts</option>
+                <option value="" className="bg-white dark:bg-[#141414]">
+                  All Cuisines
+                </option>
+                <option value="Pizza" className="bg-white dark:bg-[#141414]">
+                  Pizza
+                </option>
+                <option value="Snacks" className="bg-white dark:bg-[#141414]">
+                  Snacks
+                </option>
+                <option value="Drinks" className="bg-white dark:bg-[#141414]">
+                  Drinks
+                </option>
+                <option value="Desserts" className="bg-white dark:bg-[#141414]">
+                  Desserts
+                </option>
               </select>
-              <ChevronDown className="absolute right-5 top-1/2 -translate-y-1/2 text-slate-400 dark:text-gray-500 pointer-events-none" size={16} />
+              <ChevronDown
+                className="absolute right-5 top-1/2 -translate-y-1/2 text-slate-400 dark:text-gray-500 pointer-events-none"
+                size={16}
+              />
             </div>
 
             <div className="relative w-full sm:w-56 group">
-              <ArrowUpDown className="absolute left-5 top-1/2 -translate-y-1/2 text-slate-400 dark:text-gray-500 group-focus-within:text-[#FFB200] transition-colors" size={18} />
+              <ArrowUpDown
+                className="absolute left-5 top-1/2 -translate-y-1/2 text-slate-400 dark:text-gray-500 group-focus-within:text-[#FFB200] transition-colors"
+                size={18}
+              />
               <select
                 onChange={(e) => setSort(e.target.value)}
                 className="w-full bg-slate-100 dark:bg-black/20 border-none rounded-2xl pl-12 pr-10 py-4 text-slate-900 dark:text-white appearance-none focus:ring-2 focus:ring-[#FFB200] transition-all font-black uppercase text-[10px] tracking-widest cursor-pointer"
               >
-                <option value="default" className="bg-white dark:bg-[#141414]">Sort By</option>
-                <option value="price-low" className="bg-white dark:bg-[#141414]">Lowest Price</option>
-                <option value="price-high" className="bg-white dark:bg-[#141414]">Highest Price</option>
-                <option value="rating" className="bg-white dark:bg-[#141414]">Top Rated</option>
+                <option value="default" className="bg-white dark:bg-[#141414]">
+                  Sort By
+                </option>
+                <option
+                  value="price-low"
+                  className="bg-white dark:bg-[#141414]"
+                >
+                  Lowest Price
+                </option>
+                <option
+                  value="price-high"
+                  className="bg-white dark:bg-[#141414]"
+                >
+                  Highest Price
+                </option>
+                <option value="rating" className="bg-white dark:bg-[#141414]">
+                  Top Rated
+                </option>
               </select>
-              <ChevronDown className="absolute right-5 top-1/2 -translate-y-1/2 text-slate-400 dark:text-gray-500 pointer-events-none" size={16} />
+              <ChevronDown
+                className="absolute right-5 top-1/2 -translate-y-1/2 text-slate-400 dark:text-gray-500 pointer-events-none"
+                size={16}
+              />
             </div>
           </div>
         </motion.div>
@@ -167,7 +225,13 @@ export default function ItemList() {
           <>
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-x-8  gap-y-12 md:gap-y-14">
               {displayFoods.map((food, index) => (
-                <div key={food._id} ref={index === displayFoods.length - 1 ? lastElementRef : null} className="h-full">
+                <div
+                  key={food._id}
+                  ref={
+                    index === displayFoods.length - 1 ? lastElementRef : null
+                  }
+                  className="h-full"
+                >
                   <FoodCard food={food} />
                 </div>
               ))}
@@ -178,7 +242,11 @@ export default function ItemList() {
                 <div className="relative w-16 h-16">
                   <motion.div
                     animate={{ rotate: 360 }}
-                    transition={{ duration: 2, repeat: Infinity, ease: "linear" }}
+                    transition={{
+                      duration: 2,
+                      repeat: Infinity,
+                      ease: "linear",
+                    }}
                     className="absolute inset-0 border-4 border-[#FFB200] border-t-transparent rounded-full shadow-[0_0_15px_#FFB200/50]"
                   />
                 </div>
@@ -192,7 +260,10 @@ export default function ItemList() {
             className="flex flex-col items-center justify-center py-32 bg-slate-100 dark:bg-white/5 rounded-[3rem] border border-dashed border-slate-300 dark:border-white/10 text-center px-4"
           >
             <div className="w-24 h-24 bg-white dark:bg-white/5 rounded-full flex items-center justify-center mb-6 shadow-lg">
-              <Utensils size={40} className="text-slate-400 dark:text-gray-500" />
+              <Utensils
+                size={40}
+                className="text-slate-400 dark:text-gray-500"
+              />
             </div>
             <h3 className="text-3xl font-black italic uppercase tracking-widest text-[#FFB200]">
               Chefs Miss
@@ -211,8 +282,12 @@ export default function ItemList() {
               <Utensils size={24} />
             </div>
             <div>
-              <p className="text-slate-400 dark:text-gray-500 text-[10px] font-black uppercase tracking-[0.2em]">Inventory</p>
-              <p className="text-xl font-black italic text-slate-800 dark:text-white">{processedFoods.length} Gourmet Items</p>
+              <p className="text-slate-400 dark:text-gray-500 text-[10px] font-black uppercase tracking-[0.2em]">
+                Inventory
+              </p>
+              <p className="text-xl font-black italic text-slate-800 dark:text-white">
+                {processedFoods.length} Gourmet Items
+              </p>
             </div>
           </div>
 
@@ -221,8 +296,12 @@ export default function ItemList() {
               <Zap size={24} />
             </div>
             <div>
-              <p className="text-slate-400 dark:text-gray-500 text-[10px] font-black uppercase tracking-[0.2em]">Efficiency</p>
-              <p className="text-xl font-black italic text-slate-800 dark:text-white">Instant Kitchen Sync</p>
+              <p className="text-slate-400 dark:text-gray-500 text-[10px] font-black uppercase tracking-[0.2em]">
+                Efficiency
+              </p>
+              <p className="text-xl font-black italic text-slate-800 dark:text-white">
+                Instant Kitchen Sync
+              </p>
             </div>
           </div>
 
@@ -231,8 +310,12 @@ export default function ItemList() {
               <Star size={24} />
             </div>
             <div>
-              <p className="text-slate-400 dark:text-gray-500 text-[10px] font-black uppercase tracking-[0.2em]">Standards</p>
-              <p className="text-xl font-black italic text-slate-800 dark:text-white">5-Star Quality Verified</p>
+              <p className="text-slate-400 dark:text-gray-500 text-[10px] font-black uppercase tracking-[0.2em]">
+                Standards
+              </p>
+              <p className="text-xl font-black italic text-slate-800 dark:text-white">
+                5-Star Quality Verified
+              </p>
             </div>
           </div>
         </div>

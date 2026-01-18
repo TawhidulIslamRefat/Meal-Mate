@@ -22,7 +22,7 @@ import {
   Info,
   ChevronRight,
 } from "lucide-react";
-import Loading from "@/app/Components/Loading/Loading";
+import Loading from "@/Components/Loading/Loading";
 
 export default function ProductDetailsPage() {
   const params = useParams();

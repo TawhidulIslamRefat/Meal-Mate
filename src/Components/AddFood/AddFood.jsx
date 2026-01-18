@@ -15,7 +15,7 @@ import {
   Info,
   CheckCircle2,
 } from "lucide-react";
-import { AuthContext } from "@/app/Context/AuthContext";
+import { AuthContext } from "@/Context/AuthContext";
 
 export default function AddFood() {
   const { user } = use(AuthContext);

@@ -3,11 +3,10 @@ import React from "react";
 import Image from "next/image";
 import { motion } from "framer-motion";
 import { Utensils, Clock, Users, Star, Award, Heart } from "lucide-react";
-import Chefs from "../Components/Chefs/Chefs";
+import Chefs from "../../Components/Chefs/Chefs";
 export default function AboutPage() {
   return (
     <div className="min-h-screen bg-slate-50 dark:bg-[#050505] transition-colors duration-500 overflow-x-hidden">
-
       <section className="relative pt-32 pb-20 md:pt-40 md:pb-32 px-4 overflow-hidden">
         <div className="absolute top-0 left-1/2 -translate-x-1/2 w-200 h-200 bg-[#FFB200]/10 rounded-full blur-[120px] pointer-events-none" />
 
@@ -21,11 +20,16 @@ export default function AboutPage() {
               Since 2010
             </span>
             <h1 className="text-5xl md:text-7xl lg:text-8xl font-black text-slate-900 dark:text-white mb-6 uppercase tracking-tight">
-              Crafting <span className="text-transparent bg-clip-text bg-linear-to-r from-[#FFB200] to-orange-500 italic">Culinary</span> <br />
+              Crafting{" "}
+              <span className="text-transparent bg-clip-text bg-linear-to-r from-[#FFB200] to-orange-500 italic">
+                Culinary
+              </span>{" "}
+              <br />
               Memories
             </h1>
             <p className="max-w-2xl mx-auto text-slate-700 dark:text-gray-400 text-lg md:text-xl font-medium leading-relaxed">
-              We dont just cook food; we design experiences. Every dish tells a story of tradition, innovation, and passion.
+              We dont just cook food; we design experiences. Every dish tells a
+              story of tradition, innovation, and passion.
             </p>
           </motion.div>
         </div>
@@ -33,7 +37,6 @@ export default function AboutPage() {
 
       <section className="w-full max-w-7xl mx-auto px-4 md:px-8 py-10 md:py-20">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
-
           <motion.div
             initial={{ opacity: 0, x: -50 }}
             whileInView={{ opacity: 1, x: 0 }}
@@ -47,20 +50,34 @@ export default function AboutPage() {
                 <span className="text-orange-500 italic">Kitchen to Heart</span>
               </h2>
               <p className="text-slate-600 dark:text-gray-400 text-lg leading-relaxed">
-                Founded with a simple mission: to bring authentic, high-quality gourmet flavors to your doorstep. What started as a small family kitchen has grown into a culinary movement, celebrated for its dedication to freshness and taste.
+                Founded with a simple mission: to bring authentic, high-quality
+                gourmet flavors to your doorstep. What started as a small family
+                kitchen has grown into a culinary movement, celebrated for its
+                dedication to freshness and taste.
               </p>
               <p className="text-slate-600 dark:text-gray-400 text-lg leading-relaxed">
-                We believe that great food brings people together. Thats why we source the finest ingredients, collaborate with world-class chefs, and treat every order as a masterclass in gastronomy.
+                We believe that great food brings people together. Thats why we
+                source the finest ingredients, collaborate with world-class
+                chefs, and treat every order as a masterclass in gastronomy.
               </p>
             </div>
 
             <div className="flex items-center gap-4">
               <div className="w-16 h-16 rounded-full bg-gray-200 dark:bg-zinc-800 overflow-hidden relative">
-                <Image src="https://images.unsplash.com/photo-1583394293214-28ded15ee548?q=80&w=2080&auto=format&fit=crop" fill className="object-cover" alt="Founder" />
+                <Image
+                  src="https://images.unsplash.com/photo-1583394293214-28ded15ee548?q=80&w=2080&auto=format&fit=crop"
+                  fill
+                  className="object-cover"
+                  alt="Founder"
+                />
               </div>
               <div>
-                <p className="text-slate-900 dark:text-white font-bold text-lg">Marco De Pierre</p>
-                <p className="text-[#FFB200] text-sm font-bold uppercase tracking-widest">Head Chef & Founder</p>
+                <p className="text-slate-900 dark:text-white font-bold text-lg">
+                  Marco De Pierre
+                </p>
+                <p className="text-[#FFB200] text-sm font-bold uppercase tracking-widest">
+                  Head Chef & Founder
+                </p>
               </div>
             </div>
           </motion.div>
@@ -84,8 +101,12 @@ export default function AboutPage() {
               <div className="absolute bottom-6 left-6 right-6 bg-white/90 dark:bg-black/80 backdrop-blur-xl p-6 rounded-3xl border border-white/20 dark:border-white/10 shadow-lg">
                 <div className="flex justify-between items-center">
                   <div>
-                    <p className="text-orange-500 font-bold uppercase text-xs tracking-widest mb-1">Our Philosophy</p>
-                    <p className="text-slate-900 dark:text-white font-bold text-lg">Fresh Ingredients, Daily.</p>
+                    <p className="text-orange-500 font-bold uppercase text-xs tracking-widest mb-1">
+                      Our Philosophy
+                    </p>
+                    <p className="text-slate-900 dark:text-white font-bold text-lg">
+                      Fresh Ingredients, Daily.
+                    </p>
                   </div>
                   <div className="w-12 h-12 bg-[#FFB200] rounded-full flex items-center justify-center text-white">
                     <Heart size={20} fill="currentColor" />
@@ -110,17 +131,23 @@ export default function AboutPage() {
             { icon: Utensils, label: "Dishes Served", value: "1M+" },
             { icon: Award, label: "Awards Won", value: "25+" },
           ].map((stat, i) => (
-            <div key={i} className={`flex flex-col items-center text-center ${i % 2 !== 0 ? 'pl-8' : ''}`}>
+            <div
+              key={i}
+              className={`flex flex-col items-center text-center ${i % 2 !== 0 ? "pl-8" : ""}`}
+            >
               <stat.icon className="text-[#FFB200] mb-4" size={32} />
-              <h3 className="text-3xl md:text-5xl font-black text-slate-900 dark:text-white mb-2">{stat.value}</h3>
-              <p className="text-slate-700 dark:text-gray-500 font-bold uppercase tracking-wider text-xs">{stat.label}</p>
+              <h3 className="text-3xl md:text-5xl font-black text-slate-900 dark:text-white mb-2">
+                {stat.value}
+              </h3>
+              <p className="text-slate-700 dark:text-gray-500 font-bold uppercase tracking-wider text-xs">
+                {stat.label}
+              </p>
             </div>
           ))}
         </motion.div>
       </section>
 
       <Chefs />
-
     </div>
   );
 }

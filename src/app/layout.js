@@ -1,8 +1,8 @@
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
-import Navbar from "./SheredComponent/Navbar";
-import Footer from "./SheredComponent/Footer";
-import AuthProvider from "./Context/AuthProvider";
+import Navbar from "@/SheredComponent/Navbar";
+import Footer from "@/SheredComponent/Footer";
+import AuthProvider from "@/Context/AuthProvider";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -22,13 +22,14 @@ export const metadata = {
 export default function RootLayout({ children }) {
   return (
     <html lang="en">
-      <body suppressHydrationWarning
+      <body
+        suppressHydrationWarning
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
         <AuthProvider>
-        <Navbar></Navbar>
-        {children}
-        <Footer></Footer>
+          <Navbar></Navbar>
+          {children}
+          <Footer></Footer>
         </AuthProvider>
       </body>
     </html>

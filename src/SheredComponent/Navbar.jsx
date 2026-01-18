@@ -1,11 +1,10 @@
 "use client";
 import React, { useState, useEffect, use } from "react";
 import { FaArrowRight, FaBars, FaTimes } from "react-icons/fa";
-import logo from "../../assets/Rectangle 2.png";
+import logo from "../assets/Rectangle 2.png";
 import Image from "next/image";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { AuthContext } from "../Context/AuthContext";
 import Swal from "sweetalert2";
 import { motion, AnimatePresence } from "framer-motion";
 import {
@@ -15,6 +14,7 @@ import {
   FaSignOutAlt,
   FaChevronDown,
 } from "react-icons/fa";
+import { AuthContext } from "@/Context/AuthContext";
 
 export default function Navbar() {
   const { user, logOut } = use(AuthContext);
@@ -64,10 +64,9 @@ export default function Navbar() {
 
   return (
     <div
-      className={`sticky top-0 left-0 w-full z-100 transition-all bg-black duration-300 ${scrolled
-          ? "bg-gray-950  backdrop-blur-md shadow-lg"
-          : "bg-gray-950"
-        }`}
+      className={`sticky top-0 left-0 w-full z-100 transition-all bg-black duration-300 ${
+        scrolled ? "bg-gray-950  backdrop-blur-md shadow-lg" : "bg-gray-950"
+      }`}
     >
       <nav className="h-20 flex items-center justify-between w-full md:w-10/12 px-4 md:px-8 mx-auto">
         <Link href="/" className="flex items-center gap-1.5 focus:outline-none">
@@ -83,10 +82,11 @@ export default function Navbar() {
               <li key={link.name}>
                 <Link
                   href={link.href}
-                  className={`transition-colors duration-200 text-sm lg:text-base ${isActive(link.href)
+                  className={`transition-colors duration-200 text-sm lg:text-base ${
+                    isActive(link.href)
                       ? "text-[#FFB200] font-bold"
                       : "text-slate-100 dark:text-gray-300 hover:text-[#FFB200]"
-                    }`}
+                  }`}
                 >
                   {link.name}
                 </Link>
@@ -109,8 +109,9 @@ export default function Navbar() {
                   />
                 </div>
                 <FaChevronDown
-                  className={`text-xs text-slate-500 dark:text-gray-400 transition-transform duration-300 ${isDropdownOpen ? "rotate-180" : ""
-                    }`}
+                  className={`text-xs text-slate-500 dark:text-gray-400 transition-transform duration-300 ${
+                    isDropdownOpen ? "rotate-180" : ""
+                  }`}
                 />
               </button>
 
@@ -157,8 +158,20 @@ export default function Navbar() {
 
                         <div className="p-2 space-y-1">
                           {[
-                            { name: "Foods", href: "/foods", icon: FaUtensils, color: "text-[#FFB200]", bg: "bg-[#FFB200]/10" },
-                            { name: "Add Food", href: "/add-food", icon: FaPlus, color: "text-green-500", bg: "bg-green-500/10" }
+                            {
+                              name: "Foods",
+                              href: "/foods",
+                              icon: FaUtensils,
+                              color: "text-[#FFB200]",
+                              bg: "bg-[#FFB200]/10",
+                            },
+                            {
+                              name: "Add Food",
+                              href: "/add-food",
+                              icon: FaPlus,
+                              color: "text-green-500",
+                              bg: "bg-green-500/10",
+                            },
                           ].map((item, idx) => (
                             <Link
                               key={idx}
@@ -166,10 +179,16 @@ export default function Navbar() {
                               onClick={() => setIsDropdownOpen(false)}
                               className="flex items-center gap-3 px-3 py-2.5 text-slate-600 dark:text-gray-300 hover:text-slate-900 dark:hover:text-white hover:bg-slate-50 dark:hover:bg-white/5 rounded-xl transition-all duration-200 group"
                             >
-                              <div className={`w-8 h-8 rounded-lg ${item.bg} flex items-center justify-center group-hover:scale-110 transition-transform`}>
-                                <item.icon className={`${item.color} text-sm`} />
+                              <div
+                                className={`w-8 h-8 rounded-lg ${item.bg} flex items-center justify-center group-hover:scale-110 transition-transform`}
+                              >
+                                <item.icon
+                                  className={`${item.color} text-sm`}
+                                />
                               </div>
-                              <span className="text-sm font-medium">{item.name}</span>
+                              <span className="text-sm font-medium">
+                                {item.name}
+                              </span>
                             </Link>
                           ))}
                         </div>
@@ -229,10 +248,11 @@ export default function Navbar() {
                   <Link
                     href={link.href}
                     onClick={() => setIsOpen(false)}
-                    className={`block py-2 text-lg ${isActive(link.href)
+                    className={`block py-2 text-lg ${
+                      isActive(link.href)
                         ? "text-[#FFB200] font-bold"
                         : "text-slate-100 dark:text-gray-300 hover:text-[#FFB200]"
-                      }`}
+                    }`}
                   >
                     {link.name}
                   </Link>
@@ -245,7 +265,10 @@ export default function Navbar() {
                     <div className="flex items-center gap-4">
                       <div className="relative w-12 h-12">
                         <Image
-                          src={user?.photoURL || "https://i.ibb.co/5GzXkwq/user.png"}
+                          src={
+                            user?.photoURL ||
+                            "https://i.ibb.co/5GzXkwq/user.png"
+                          }
                           alt="user"
                           fill
                           className="rounded-full border-2 border-[#FFB200] object-cover"
