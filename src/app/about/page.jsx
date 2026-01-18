@@ -5,7 +5,6 @@ import Image from "next/image";
 import { motion } from "framer-motion";
 import { Utensils, Clock, Users, Star, Award, Heart } from "lucide-react";
 import Chefs from "../Components/Chefs/Chefs";
-
 export default function AboutPage() {
   return (
     <div className="min-h-screen bg-slate-50 dark:bg-[#050505] transition-colors duration-500 overflow-x-hidden">
