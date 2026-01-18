@@ -22,7 +22,7 @@ export default function ItemList() {
   useEffect(() => {
     const fetchFoods = async () => {
       try {
-        const res = await fetch("http://localhost:5000/foods");
+        const res = await fetch("https://meal-mate-server-seven.vercel.app/foods");
         const data = await res.json();
         setFoods(data);
         setLoading(false);

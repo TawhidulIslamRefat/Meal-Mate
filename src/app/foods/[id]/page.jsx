@@ -37,7 +37,7 @@ export default function ProductDetailsPage() {
     const id = params?.id;
     if (!id) return;
 
-    fetch(`http://localhost:5000/foods/${id}`)
+    fetch(`https://meal-mate-server-seven.vercel.app/foods/${id}`)
       .then((res) => {
         if (!res.ok) throw new Error("Food not found");
         return res.json();
@@ -77,7 +77,10 @@ export default function ProductDetailsPage() {
           onClick={() => router.push("/foods")}
           className="bg-slate-900 dark:bg-white text-white dark:text-black font-black uppercase tracking-widest px-8 py-4 rounded-2xl hover:bg-red-600 dark:hover:bg-[#FFB200] transition-colors flex items-center gap-2 group shadow-lg"
         >
-          <ArrowLeft size={18} className="group-hover:-translate-x-1 transition-transform" />
+          <ArrowLeft
+            size={18}
+            className="group-hover:-translate-x-1 transition-transform"
+          />
           Back to Menu
         </button>
       </div>
@@ -122,7 +125,10 @@ export default function ProductDetailsPage() {
           onClick={() => router.back()}
           className="group flex items-center gap-2 text-[11px] font-black text-slate-600 dark:text-gray-500 hover:text-red-600 dark:hover:text-[#FFB200] uppercase tracking-[0.3em] transition-all duration-300 mb-10"
         >
-          <ArrowLeft size={16} className="transition-transform group-hover:-translate-x-2" />
+          <ArrowLeft
+            size={16}
+            className="transition-transform group-hover:-translate-x-2"
+          />
           The Collection
         </motion.button>
 
@@ -147,25 +153,37 @@ export default function ProductDetailsPage() {
 
               <div className="absolute top-4 right-4 md:top-8 md:right-8 z-20 space-y-2 flex flex-col items-end">
                 <div className="bg-slate-900 dark:bg-[#FFB200] text-white dark:text-black px-4 py-2 rounded-2xl shadow-xl flex items-center gap-2">
-                  <Leaf size={14} className="text-emerald-400 dark:text-emerald-700" />
-                  <p className="text-[10px] font-black uppercase tracking-widest">{category}</p>
+                  <Leaf
+                    size={14}
+                    className="text-emerald-400 dark:text-emerald-700"
+                  />
+                  <p className="text-[10px] font-black uppercase tracking-widest">
+                    {category}
+                  </p>
                 </div>
                 {availability ? (
                   <div className="bg-emerald-50 dark:bg-emerald-600/10 backdrop-blur-md border border-emerald-200 dark:border-emerald-500/30 text-emerald-600 dark:text-emerald-400 px-3 py-1.5 rounded-xl flex items-center gap-2">
                     <CheckCircle2 size={12} />
-                    <p className="text-[9px] font-bold uppercase tracking-widest">In Stock</p>
+                    <p className="text-[9px] font-bold uppercase tracking-widest">
+                      In Stock
+                    </p>
                   </div>
                 ) : (
                   <div className="bg-red-50 dark:bg-red-600/10 backdrop-blur-md border border-red-200 dark:border-red-500/30 text-red-600 dark:text-red-400 px-3 py-1.5 rounded-xl flex items-center gap-2">
                     <AlertCircle size={12} />
-                    <p className="text-[9px] font-bold uppercase tracking-widest">Sold Out</p>
+                    <p className="text-[9px] font-bold uppercase tracking-widest">
+                      Sold Out
+                    </p>
                   </div>
                 )}
               </div>
 
               <div className="absolute bottom-4 left-4 md:bottom-10 md:left-8 z-20 flex flex-wrap gap-2 max-w-[80%]">
                 {tags.map((tag, i) => (
-                  <span key={i} className="bg-white/80 dark:bg-black/40 backdrop-blur-md border border-slate-200 dark:border-white/10 px-3 py-1 rounded-lg text-[9px] font-bold text-slate-600 dark:text-gray-300 uppercase tracking-widest">
+                  <span
+                    key={i}
+                    className="bg-white/80 dark:bg-black/40 backdrop-blur-md border border-slate-200 dark:border-white/10 px-3 py-1 rounded-lg text-[9px] font-bold text-slate-600 dark:text-gray-300 uppercase tracking-widest"
+                  >
                     #{tag}
                   </span>
                 ))}
@@ -174,10 +192,30 @@ export default function ProductDetailsPage() {
 
             <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mt-8">
               {[
-                { icon: Clock, label: "Cook Time", value: prepTime, color: "text-blue-500" },
-                { icon: Users, label: "Serving", value: servingSize, color: "text-indigo-500" },
-                { icon: Globe, label: "Origin", value: origin, color: "text-emerald-500" },
-                { icon: Flame, label: "Spiciness", value: spicyLevel || "None", color: "text-red-500" },
+                {
+                  icon: Clock,
+                  label: "Cook Time",
+                  value: prepTime,
+                  color: "text-blue-500",
+                },
+                {
+                  icon: Users,
+                  label: "Serving",
+                  value: servingSize,
+                  color: "text-indigo-500",
+                },
+                {
+                  icon: Globe,
+                  label: "Origin",
+                  value: origin,
+                  color: "text-emerald-500",
+                },
+                {
+                  icon: Flame,
+                  label: "Spiciness",
+                  value: spicyLevel || "None",
+                  color: "text-red-500",
+                },
               ].map((item, i) => (
                 <motion.div
                   initial={{ opacity: 0, y: 10 }}
@@ -186,9 +224,16 @@ export default function ProductDetailsPage() {
                   key={i}
                   className="bg-white dark:bg-white/5 border border-slate-200 dark:border-white/10 rounded-2xl p-4 text-center shadow-sm dark:shadow-none group hover:border-red-500/50 transition-colors"
                 >
-                  <item.icon size={20} className={`mx-auto mb-2 ${item.color}`} />
-                  <p className="text-[9px] font-black text-slate-400 dark:text-gray-500 uppercase tracking-widest mb-1">{item.label}</p>
-                  <p className="text-xs font-black text-slate-900 dark:text-white uppercase italic tracking-tighter">{item.value}</p>
+                  <item.icon
+                    size={20}
+                    className={`mx-auto mb-2 ${item.color}`}
+                  />
+                  <p className="text-[9px] font-black text-slate-400 dark:text-gray-500 uppercase tracking-widest mb-1">
+                    {item.label}
+                  </p>
+                  <p className="text-xs font-black text-slate-900 dark:text-white uppercase italic tracking-tighter">
+                    {item.value}
+                  </p>
                 </motion.div>
               ))}
             </div>
@@ -211,7 +256,9 @@ export default function ProductDetailsPage() {
 
               <div className="flex flex-wrap items-center gap-6 md:gap-8 mb-8">
                 <div>
-                  <p className="text-[10px] font-black text-slate-600 uppercase tracking-widest mb-1">Premium Price</p>
+                  <p className="text-[10px] font-black text-slate-600 uppercase tracking-widest mb-1">
+                    Premium Price
+                  </p>
                   <div className="flex items-baseline gap-3">
                     <span className="text-4xl md:text-5xl font-black italic tracking-tighter text-slate-900 dark:text-white">
                       ${discountPrice || price}
@@ -227,16 +274,33 @@ export default function ProductDetailsPage() {
                 <div className="h-10 md:h-14 w-px bg-slate-200 dark:bg-white/10 hidden md:block" />
 
                 <div>
-                  <p className="text-[10px] font-black text-slate-600 uppercase tracking-widest mb-1">Gourmet Rating</p>
+                  <p className="text-[10px] font-black text-slate-600 uppercase tracking-widest mb-1">
+                    Gourmet Rating
+                  </p>
                   <div className="flex items-center gap-2">
                     <div className="flex gap-0.5 text-amber-500">
                       {[...Array(5)].map((_, i) => (
-                        <Star key={i} size={18} fill={i < Math.floor(rating) ? "currentColor" : "none"} className={i >= Math.floor(rating) ? "text-slate-200 dark:text-gray-800" : ""} />
+                        <Star
+                          key={i}
+                          size={18}
+                          fill={
+                            i < Math.floor(rating) ? "currentColor" : "none"
+                          }
+                          className={
+                            i >= Math.floor(rating)
+                              ? "text-slate-200 dark:text-gray-800"
+                              : ""
+                          }
+                        />
                       ))}
                     </div>
-                    <span className="text-xl font-black italic text-slate-900 dark:text-white mt-1">{rating.toFixed(1)}</span>
+                    <span className="text-xl font-black italic text-slate-900 dark:text-white mt-1">
+                      {rating.toFixed(1)}
+                    </span>
                   </div>
-                  <p className="text-[9px] text-slate-600 font-bold uppercase tracking-widest">Global Reviews ({totalReviews})</p>
+                  <p className="text-[9px] text-slate-600 font-bold uppercase tracking-widest">
+                    Global Reviews ({totalReviews})
+                  </p>
                 </div>
               </div>
 
@@ -250,12 +314,18 @@ export default function ProductDetailsPage() {
                 <button
                   key={tab}
                   onClick={() => setActiveTab(tab)}
-                  className={`flex-1 py-3 px-4 rounded-xl text-[10px] font-black uppercase tracking-widest transition-all relative border-none cursor-pointer whitespace-nowrap ${activeTab === tab ? "bg-white dark:bg-white/10 text-red-600 dark:text-[#FFB200] shadow-sm" : "text-slate-500 hover:text-slate-700 dark:text-gray-400"
-                    }`}
+                  className={`flex-1 py-3 px-4 rounded-xl text-[10px] font-black uppercase tracking-widest transition-all relative border-none cursor-pointer whitespace-nowrap ${
+                    activeTab === tab
+                      ? "bg-white dark:bg-white/10 text-red-600 dark:text-[#FFB200] shadow-sm"
+                      : "text-slate-500 hover:text-slate-700 dark:text-gray-400"
+                  }`}
                 >
                   {tab}
                   {activeTab === tab && (
-                    <motion.div layoutId="tab-active" className="absolute bottom-0 left-1/2 -translate-x-1/2 w-8 h-1 bg-red-600 dark:bg-[#FFB200] rounded-full" />
+                    <motion.div
+                      layoutId="tab-active"
+                      className="absolute bottom-0 left-1/2 -translate-x-1/2 w-8 h-1 bg-red-600 dark:bg-[#FFB200] rounded-full"
+                    />
                   )}
                 </button>
               ))}
@@ -272,13 +342,20 @@ export default function ProductDetailsPage() {
                 >
                   {activeTab === "overview" && (
                     <div className="space-y-6">
-                      <p className="text-slate-600 dark:text-gray-400 leading-relaxed font-medium text-lg">{description}</p>
+                      <p className="text-slate-600 dark:text-gray-400 leading-relaxed font-medium text-lg">
+                        {description}
+                      </p>
 
                       <div className="space-y-3">
-                        <h4 className="text-[12px] font-black text-slate-900 dark:text-white uppercase tracking-widest">Key Ingredients</h4>
+                        <h4 className="text-[12px] font-black text-slate-900 dark:text-white uppercase tracking-widest">
+                          Key Ingredients
+                        </h4>
                         <div className="flex flex-wrap gap-2">
                           {ingredients.map((item, i) => (
-                            <span key={i} className="bg-white dark:bg-white/5 border border-slate-200 dark:border-white/10 px-4 py-2 rounded-xl text-xs font-bold text-slate-700 dark:text-gray-300 italic">
+                            <span
+                              key={i}
+                              className="bg-white dark:bg-white/5 border border-slate-200 dark:border-white/10 px-4 py-2 rounded-xl text-xs font-bold text-slate-700 dark:text-gray-300 italic"
+                            >
                               • {item}
                             </span>
                           ))}
@@ -295,11 +372,16 @@ export default function ProductDetailsPage() {
                         </h4>
                         <div className="bg-white dark:bg-white/5 rounded-2xl p-6 shadow-sm dark:shadow-none space-y-4">
                           {Object.entries(nutrition).map(([key, val]) => (
-                            <div key={key} className="flex justify-between items-center group">
+                            <div
+                              key={key}
+                              className="flex justify-between items-center group"
+                            >
                               <span className="text-[12px] font-black uppercase tracking-widest text-slate-600 group-hover:text-red-600 transition-colors">
                                 {key}
                               </span>
-                              <span className="text-lg font-black italic tracking-tighter text-slate-900 dark:text-white">{val}</span>
+                              <span className="text-lg font-black italic tracking-tighter text-slate-900 dark:text-white">
+                                {val}
+                              </span>
                             </div>
                           ))}
                         </div>
@@ -310,14 +392,23 @@ export default function ProductDetailsPage() {
                           <AlertCircle size={14} /> Allergen Advisory
                         </h4>
                         <div className="flex flex-wrap gap-3">
-                          {allergens.length > 0 ? allergens.map((item, i) => (
-                            <div key={i} className="bg-red-50 dark:bg-red-900/10 border border-red-100 dark:border-red-900/20 px-5 py-3 rounded-2xl flex items-center gap-3 w-full">
-                              <div className="w-2 h-2 rounded-full bg-red-600 shadow-[0_0_8px_rgba(220,28,28,0.5)]" />
-                              <span className="text-xs font-black uppercase text-red-900 dark:text-red-400 italic">Contains {item}</span>
-                            </div>
-                          )) : (
+                          {allergens.length > 0 ? (
+                            allergens.map((item, i) => (
+                              <div
+                                key={i}
+                                className="bg-red-50 dark:bg-red-900/10 border border-red-100 dark:border-red-900/20 px-5 py-3 rounded-2xl flex items-center gap-3 w-full"
+                              >
+                                <div className="w-2 h-2 rounded-full bg-red-600 shadow-[0_0_8px_rgba(220,28,28,0.5)]" />
+                                <span className="text-xs font-black uppercase text-red-900 dark:text-red-400 italic">
+                                  Contains {item}
+                                </span>
+                              </div>
+                            ))
+                          ) : (
                             <div className="bg-emerald-50 dark:bg-emerald-900/10 border border-emerald-100 dark:border-emerald-900/20 px-5 py-3 rounded-2xl w-full">
-                              <span className="text-xs font-black text-emerald-600 dark:text-emerald-400 italic">No Common Allergens Verified</span>
+                              <span className="text-xs font-black text-emerald-600 dark:text-emerald-400 italic">
+                                No Common Allergens Verified
+                              </span>
                             </div>
                           )}
                         </div>
@@ -335,7 +426,9 @@ export default function ProductDetailsPage() {
                       <div className="relative z-10">
                         <div className="flex items-center gap-3 mb-6">
                           <div className="w-12 h-px bg-red-600" />
-                          <h4 className="text-[10px] font-black text-red-600 dark:text-[#FFB200] uppercase tracking-[0.4em]">Artisans Insight</h4>
+                          <h4 className="text-[10px] font-black text-red-600 dark:text-[#FFB200] uppercase tracking-[0.4em]">
+                            Artisans Insight
+                          </h4>
                         </div>
                         <p className="text-xl md:text-2xl text-white dark:text-gray-100 font-extrabold italic leading-snug tracking-tight">
                           {chefNote}
@@ -350,14 +443,23 @@ export default function ProductDetailsPage() {
             <div className="mt-auto space-y-8 pt-10 border-t border-slate-200 dark:border-white/10">
               {customization.addons.length > 0 && (
                 <div className="space-y-4">
-                  <h4 className="text-[10px] font-black text-slate-900 dark:text-white uppercase tracking-widest">Enhance Your Dish</h4>
+                  <h4 className="text-[10px] font-black text-slate-900 dark:text-white uppercase tracking-widest">
+                    Enhance Your Dish
+                  </h4>
                   <div className="flex flex-wrap gap-3">
                     {customization.addons.map((addon, i) => (
-                      <button key={i} className="bg-white dark:bg-white/5 border border-slate-200 dark:border-white/10 px-5 py-3 rounded-2xl flex items-center justify-between gap-4 hover:border-red-600 dark:hover:border-[#FFB200] group transition-all">
-                        <span className="text-xs font-bold text-slate-700 dark:text-gray-400 group-hover:text-red-600 transition-colors uppercase italic">{addon.name}</span>
+                      <button
+                        key={i}
+                        className="bg-white dark:bg-white/5 border border-slate-200 dark:border-white/10 px-5 py-3 rounded-2xl flex items-center justify-between gap-4 hover:border-red-600 dark:hover:border-[#FFB200] group transition-all"
+                      >
+                        <span className="text-xs font-bold text-slate-700 dark:text-gray-400 group-hover:text-red-600 transition-colors uppercase italic">
+                          {addon.name}
+                        </span>
                         <div className="flex items-center gap-1">
                           <Plus size={12} className="text-[#FFB200]" />
-                          <span className="text-xs font-black text-slate-900 dark:text-white mt-0.5">+${addon.price}</span>
+                          <span className="text-xs font-black text-slate-900 dark:text-white mt-0.5">
+                            +${addon.price}
+                          </span>
                         </div>
                       </button>
                     ))}
@@ -373,7 +475,9 @@ export default function ProductDetailsPage() {
                   >
                     <Minus size={18} />
                   </button>
-                  <span className="w-12 text-center font-black italic text-xl text-slate-900 dark:text-white">{quantity.toString().padStart(2, '0')}</span>
+                  <span className="w-12 text-center font-black italic text-xl text-slate-900 dark:text-white">
+                    {quantity.toString().padStart(2, "0")}
+                  </span>
                   <button
                     onClick={() => setQuantity(quantity + 1)}
                     className="w-12 h-12 rounded-xl hover:bg-slate-100 dark:hover:bg-white/10 flex items-center justify-center transition-colors text-slate-900 dark:text-white"
@@ -398,12 +502,21 @@ export default function ProductDetailsPage() {
                     <Utensils size={20} />
                   </div>
                   <div>
-                    <p className="text-[10px] font-black text-amber-800 dark:text-gray-500 uppercase tracking-widest mb-1">Kitchen Recommendation</p>
+                    <p className="text-[10px] font-black text-amber-800 dark:text-gray-500 uppercase tracking-widest mb-1">
+                      Kitchen Recommendation
+                    </p>
                     <div className="flex flex-wrap justify-center sm:justify-start gap-x-4">
                       {pairWith.map((item, i) => (
                         <div key={i} className="flex items-center gap-2">
-                          <span className="text-sm font-black italic text-slate-900 dark:text-[#FFB200] uppercase tracking-tighter cursor-pointer hover:underline underline-offset-4">{item}</span>
-                          {i < pairWith.length - 1 && <ChevronRight size={14} className="text-amber-300" />}
+                          <span className="text-sm font-black italic text-slate-900 dark:text-[#FFB200] uppercase tracking-tighter cursor-pointer hover:underline underline-offset-4">
+                            {item}
+                          </span>
+                          {i < pairWith.length - 1 && (
+                            <ChevronRight
+                              size={14}
+                              className="text-amber-300"
+                            />
+                          )}
                         </div>
                       ))}
                     </div>
@@ -433,8 +546,12 @@ export default function ProductDetailsPage() {
                   <div className="w-8 h-8 rounded-full bg-red-600/10 flex items-center justify-center mb-3">
                     <div className="w-2 h-2 rounded-full bg-red-600" />
                   </div>
-                  <span className="text-[12px] font-black uppercase tracking-widest text-slate-400 dark:text-gray-500 mb-1">Grown Fresh</span>
-                  <span className="text-sm font-black  uppercase tracking-tight text-slate-900 dark:text-white line-clamp-1">{item}</span>
+                  <span className="text-[12px] font-black uppercase tracking-widest text-slate-400 dark:text-gray-500 mb-1">
+                    Grown Fresh
+                  </span>
+                  <span className="text-sm font-black  uppercase tracking-tight text-slate-900 dark:text-white line-clamp-1">
+                    {item}
+                  </span>
                 </motion.div>
               ))}
             </div>
