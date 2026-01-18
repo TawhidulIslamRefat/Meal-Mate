@@ -39,7 +39,7 @@ export default function ProductDetailsPage() {
 
     fetch(`http://localhost:5000/foods/${id}`)
       .then((res) => {
-        if (!res.ok) throw new Error("Product not found");
+        if (!res.ok) throw new Error("Food not found");
         return res.json();
       })
       .then((data) => {
@@ -120,7 +120,7 @@ export default function ProductDetailsPage() {
           initial={{ opacity: 0, x: -10 }}
           animate={{ opacity: 1, x: 0 }}
           onClick={() => router.back()}
-          className="group flex items-center gap-2 text-[11px] font-black text-slate-400 dark:text-gray-500 hover:text-red-600 dark:hover:text-[#FFB200] uppercase tracking-[0.3em] transition-all duration-300 mb-10"
+          className="group flex items-center gap-2 text-[11px] font-black text-slate-600 dark:text-gray-500 hover:text-red-600 dark:hover:text-[#FFB200] uppercase tracking-[0.3em] transition-all duration-300 mb-10"
         >
           <ArrowLeft size={16} className="transition-transform group-hover:-translate-x-2" />
           The Collection
@@ -132,7 +132,7 @@ export default function ProductDetailsPage() {
               initial={{ opacity: 0, scale: 0.95 }}
               animate={{ opacity: 1, scale: 1 }}
               transition={{ duration: 0.8 }}
-              className="relative aspect-square rounded-[2.5rem] bg-white dark:bg-white/5 border border-slate-200 dark:border-white/10 shadow-2xl dark:shadow-none p-10 flex items-center justify-center overflow-hidden group"
+              className="relative aspect-square rounded-[2.5rem] bg-white dark:bg-white/5 border border-slate-200 dark:border-white/10 shadow-2xl dark:shadow-none p-6 md:p-10 flex items-center justify-center overflow-hidden group"
             >
               <div className="absolute inset-0 bg-linear-to-b from-transparent via-slate-100/50 dark:via-black/20 to-slate-200/50 dark:to-black/60 z-1" />
 
@@ -145,7 +145,7 @@ export default function ProductDetailsPage() {
                 priority
               />
 
-              <div className="absolute top-8 right-8 z-20 space-y-2 flex flex-col items-end">
+              <div className="absolute top-4 right-4 md:top-8 md:right-8 z-20 space-y-2 flex flex-col items-end">
                 <div className="bg-slate-900 dark:bg-[#FFB200] text-white dark:text-black px-4 py-2 rounded-2xl shadow-xl flex items-center gap-2">
                   <Leaf size={14} className="text-emerald-400 dark:text-emerald-700" />
                   <p className="text-[10px] font-black uppercase tracking-widest">{category}</p>
@@ -163,7 +163,7 @@ export default function ProductDetailsPage() {
                 )}
               </div>
 
-              <div className="absolute bottom-10 left-8 z-20 flex flex-wrap gap-2 max-w-[70%]">
+              <div className="absolute bottom-4 left-4 md:bottom-10 md:left-8 z-20 flex flex-wrap gap-2 max-w-[80%]">
                 {tags.map((tag, i) => (
                   <span key={i} className="bg-white/80 dark:bg-black/40 backdrop-blur-md border border-slate-200 dark:border-white/10 px-3 py-1 rounded-lg text-[9px] font-bold text-slate-600 dark:text-gray-300 uppercase tracking-widest">
                     #{tag}
@@ -205,29 +205,29 @@ export default function ProductDetailsPage() {
                 Artisan Crafted
               </div>
 
-              <h1 className="text-5xl md:text-7xl font-black italic tracking-tighter uppercase leading-[0.85] text-slate-900 dark:text-white mb-6">
+              <h1 className="text-4xl md:text-5xl lg:text-7xl font-black italic tracking-tighter uppercase leading-[0.9] text-slate-900 dark:text-white mb-6">
                 {name}
               </h1>
 
-              <div className="flex flex-wrap items-center gap-8 mb-8">
+              <div className="flex flex-wrap items-center gap-6 md:gap-8 mb-8">
                 <div>
-                  <p className="text-[10px] font-black text-slate-400 uppercase tracking-widest mb-1">Premium Price</p>
+                  <p className="text-[10px] font-black text-slate-600 uppercase tracking-widest mb-1">Premium Price</p>
                   <div className="flex items-baseline gap-3">
-                    <span className="text-5xl font-black italic tracking-tighter text-slate-900 dark:text-white">
+                    <span className="text-4xl md:text-5xl font-black italic tracking-tighter text-slate-900 dark:text-white">
                       ${discountPrice || price}
                     </span>
                     {discountPrice && (
-                      <span className="text-2xl font-bold text-slate-300 dark:text-gray-600 line-through italic decoration-red-600 decoration-2">
+                      <span className="text-xl md:text-2xl font-bold text-slate-400 dark:text-gray-600 line-through italic decoration-red-600 decoration-2">
                         ${price}
                       </span>
                     )}
                   </div>
                 </div>
 
-                <div className="h-14 w-px bg-slate-200 dark:bg-white/10 hidden md:block" />
+                <div className="h-10 md:h-14 w-px bg-slate-200 dark:bg-white/10 hidden md:block" />
 
                 <div>
-                  <p className="text-[10px] font-black text-slate-400 uppercase tracking-widest mb-1">Gourmet Rating</p>
+                  <p className="text-[10px] font-black text-slate-600 uppercase tracking-widest mb-1">Gourmet Rating</p>
                   <div className="flex items-center gap-2">
                     <div className="flex gap-0.5 text-amber-500">
                       {[...Array(5)].map((_, i) => (
@@ -236,21 +236,21 @@ export default function ProductDetailsPage() {
                     </div>
                     <span className="text-xl font-black italic text-slate-900 dark:text-white mt-1">{rating.toFixed(1)}</span>
                   </div>
-                  <p className="text-[9px] text-slate-400 font-bold uppercase tracking-widest">Global Reviews ({totalReviews})</p>
+                  <p className="text-[9px] text-slate-600 font-bold uppercase tracking-widest">Global Reviews ({totalReviews})</p>
                 </div>
               </div>
 
-              <p className="text-xl text-slate-600 dark:text-gray-400 font-medium italic border-l-4 border-red-600 pl-6 leading-relaxed mb-10 max-w-2xl">
+              <p className="text-lg md:text-xl text-slate-600 dark:text-gray-400 font-medium italic border-l-4 border-red-600 pl-6 leading-relaxed mb-10 max-w-2xl">
                 {shortDescription}
               </p>
             </motion.div>
 
-            <div className="flex bg-slate-100 dark:bg-white/5 p-1 rounded-2xl mb-8">
+            <div className="flex bg-slate-100 dark:bg-white/5 p-1 rounded-2xl mb-8 overflow-x-auto">
               {["overview", "nutrition", "chef"].map((tab) => (
                 <button
                   key={tab}
                   onClick={() => setActiveTab(tab)}
-                  className={`flex-1 py-3 rounded-xl text-[10px] font-black uppercase tracking-widest transition-all relative border-none cursor-pointer ${activeTab === tab ? "bg-white dark:bg-white/10 text-red-600 dark:text-[#FFB200] shadow-sm" : "text-slate-500 hover:text-slate-700 dark:text-gray-400"
+                  className={`flex-1 py-3 px-4 rounded-xl text-[10px] font-black uppercase tracking-widest transition-all relative border-none cursor-pointer whitespace-nowrap ${activeTab === tab ? "bg-white dark:bg-white/10 text-red-600 dark:text-[#FFB200] shadow-sm" : "text-slate-500 hover:text-slate-700 dark:text-gray-400"
                     }`}
                 >
                   {tab}
@@ -275,7 +275,7 @@ export default function ProductDetailsPage() {
                       <p className="text-slate-600 dark:text-gray-400 leading-relaxed font-medium text-lg">{description}</p>
 
                       <div className="space-y-3">
-                        <h4 className="text-[10px] font-black text-slate-900 dark:text-white uppercase tracking-widest">Key Ingredients</h4>
+                        <h4 className="text-[12px] font-black text-slate-900 dark:text-white uppercase tracking-widest">Key Ingredients</h4>
                         <div className="flex flex-wrap gap-2">
                           {ingredients.map((item, i) => (
                             <span key={i} className="bg-white dark:bg-white/5 border border-slate-200 dark:border-white/10 px-4 py-2 rounded-xl text-xs font-bold text-slate-700 dark:text-gray-300 italic">
@@ -290,13 +290,13 @@ export default function ProductDetailsPage() {
                   {activeTab === "nutrition" && (
                     <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
                       <div className="space-y-4">
-                        <h4 className="text-[10px] font-black text-slate-900 dark:text-white uppercase tracking-widest flex items-center gap-2">
+                        <h4 className="text-[12px] font-black text-slate-900 dark:text-white uppercase tracking-widest flex items-center gap-2">
                           <Info size={14} /> Nutrition Analysis
                         </h4>
                         <div className="bg-white dark:bg-white/5 rounded-2xl p-6 shadow-sm dark:shadow-none space-y-4">
                           {Object.entries(nutrition).map(([key, val]) => (
                             <div key={key} className="flex justify-between items-center group">
-                              <span className="text-[10px] font-black uppercase tracking-widest text-slate-400 group-hover:text-red-600 transition-colors">
+                              <span className="text-[12px] font-black uppercase tracking-widest text-slate-600 group-hover:text-red-600 transition-colors">
                                 {key}
                               </span>
                               <span className="text-lg font-black italic tracking-tighter text-slate-900 dark:text-white">{val}</span>
@@ -337,8 +337,8 @@ export default function ProductDetailsPage() {
                           <div className="w-12 h-px bg-red-600" />
                           <h4 className="text-[10px] font-black text-red-600 dark:text-[#FFB200] uppercase tracking-[0.4em]">Artisans Insight</h4>
                         </div>
-                        <p className="text-2xl text-white dark:text-gray-100 font-extrabold italic leading-snug tracking-tight">
-                          "{chefNote}"
+                        <p className="text-xl md:text-2xl text-white dark:text-gray-100 font-extrabold italic leading-snug tracking-tight">
+                          {chefNote}
                         </p>
                       </div>
                     </motion.div>
@@ -393,13 +393,13 @@ export default function ProductDetailsPage() {
               </div>
 
               {pairWith.length > 0 && (
-                <div className="bg-amber-50 dark:bg-[#FFB200]/5 border border-amber-100 dark:border-[#FFB200]/10 rounded-3xl p-6 flex items-center gap-6 group">
+                <div className="bg-amber-50 dark:bg-[#FFB200]/5 border border-amber-100 dark:border-[#FFB200]/10 rounded-3xl p-6 flex flex-col sm:flex-row items-center gap-6 group text-center sm:text-left">
                   <div className="w-12 h-12 bg-amber-500/10 rounded-full flex items-center justify-center text-amber-600 group-hover:scale-110 transition-transform">
                     <Utensils size={20} />
                   </div>
                   <div>
                     <p className="text-[10px] font-black text-amber-800 dark:text-gray-500 uppercase tracking-widest mb-1">Kitchen Recommendation</p>
-                    <div className="flex flex-wrap gap-x-4">
+                    <div className="flex flex-wrap justify-center sm:justify-start gap-x-4">
                       {pairWith.map((item, i) => (
                         <div key={i} className="flex items-center gap-2">
                           <span className="text-sm font-black italic text-slate-900 dark:text-[#FFB200] uppercase tracking-tighter cursor-pointer hover:underline underline-offset-4">{item}</span>
@@ -415,9 +415,9 @@ export default function ProductDetailsPage() {
         </div>
 
         <section className="mt-24 pt-16 border-t border-slate-200 dark:border-white/10 overflow-hidden">
-          <div className="flex flex-col lg:flex-row items-center justify-between gap-12">
+          <div className="flex flex-col lg:flex-row items-center justify-between gap-12 text-center lg:text-left">
             <div className="lg:w-1/3">
-              <h3 className="text-5xl md:text-7xl font-black italic uppercase tracking-tighter text-slate-900/10 dark:text-white/5 leading-none select-none">
+              <h3 className="text-5xl md:text-7xl font-black italic uppercase tracking-tighter text-slate-900/20 dark:text-white/5 leading-none select-none">
                 Pure <br /> Raw <br /> Essence
               </h3>
             </div>
@@ -433,8 +433,8 @@ export default function ProductDetailsPage() {
                   <div className="w-8 h-8 rounded-full bg-red-600/10 flex items-center justify-center mb-3">
                     <div className="w-2 h-2 rounded-full bg-red-600" />
                   </div>
-                  <span className="text-[10px] font-black uppercase tracking-widest text-slate-400 dark:text-gray-500 mb-1">Grown Fresh</span>
-                  <span className="text-sm font-black italic uppercase tracking-tight text-slate-900 dark:text-white line-clamp-1">{item}</span>
+                  <span className="text-[12px] font-black uppercase tracking-widest text-slate-400 dark:text-gray-500 mb-1">Grown Fresh</span>
+                  <span className="text-sm font-black  uppercase tracking-tight text-slate-900 dark:text-white line-clamp-1">{item}</span>
                 </motion.div>
               ))}
             </div>

@@ -4,8 +4,10 @@ import { motion } from "framer-motion";
 import { useEffect, useRef } from "react";
 import gsap from "gsap";
 import Image from "next/image";
+import { useRouter } from "next/navigation";
 
 export default function SpecialOffers() {
+  const router = useRouter();
   const foodRef = useRef(null);
 
   useEffect(() => {
@@ -43,7 +45,7 @@ export default function SpecialOffers() {
             ].map((item, i) => (
               <div
                 key={i}
-                className="bg-[#1b1b1b] text-center px-4 sm:px-6 py-4 sm:py-5 rounded-xl min-w-[75px] sm:min-w-[90px]"
+                className="bg-[#1b1b1b] text-center px-4 sm:px-6 py-4 sm:py-5 rounded-xl min-w-18.75 sm:min-w-22.5"
               >
                 <h3 className="text-white text-xl sm:text-2xl font-bold">{item.value}</h3>
                 <p className="text-gray-400 text-xs sm:text-sm">{item.label}</p>
@@ -52,6 +54,7 @@ export default function SpecialOffers() {
           </div>
 
           <motion.button
+          onClick={() => router.push("/foods")}
             whileHover={{ scale: 1.08 }}
             whileTap={{ scale: 0.95 }}
             className="bg-red-600 text-white px-10 py-4 rounded-lg font-semibold shadow-lg"
@@ -69,7 +72,7 @@ export default function SpecialOffers() {
             alt="Burger Combo"
             width={420}
             height={420}
-            className="drop-shadow-2xl w-full max-w-[320px] sm:max-w-[420px] h-auto"
+            className="drop-shadow-2xl w-full max-w-[320px] sm:max-w-105 h-auto"
           />
         </div>
       </div>

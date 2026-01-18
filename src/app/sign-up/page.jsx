@@ -5,8 +5,8 @@ import { useRouter } from "next/navigation";
 import { Eye, EyeOff, User, Mail, Lock, Image as ImageIcon, UserPlus, ChevronLeft } from "lucide-react";
 import { use, useState } from "react";
 import Swal from "sweetalert2";
-import { AuthContext } from "../Context/AuthContext";
 import { motion } from "framer-motion";
+import { AuthContext } from "../Context/AuthContext";
 
 export default function SignUp() {
   const [showPassword, setShowPassword] = useState(false);
@@ -99,24 +99,24 @@ export default function SignUp() {
       />
       <div className="absolute inset-0 bg-linear-to-tr from-black/60 via-transparent to-red-900/20 z-1" />
 
-      <Link href="/" className="absolute top-8 left-8 z-20 flex items-center gap-2 text-white/70 hover:text-[#FFB200] transition-all group">
-        <div className="w-10 h-10 rounded-full border border-white/20 flex items-center justify-center group-hover:bg-[#FFB200] group-hover:text-black transition-all">
-          <ChevronLeft size={20} />
+      <Link href="/" className="absolute top-6 left-6 md:top-8 md:left-8 z-20 flex items-center gap-2 text-white/70 hover:text-[#FFB200] transition-all group">
+        <div className="w-8 h-8 md:w-10 md:h-10 rounded-full border border-white/20 flex items-center justify-center group-hover:bg-[#FFB200] group-hover:text-black transition-all">
+          <ChevronLeft size={18} className="md:w-5 md:h-5" />
         </div>
-        <span className="font-bold uppercase tracking-widest text-xs">Back to home</span>
+        <span className="font-bold uppercase tracking-widest text-[9px] md:text-xs">Back to home</span>
       </Link>
 
       <motion.div
-        initial={{ opacity: 0, y: 20 }}
-        animate={{ opacity: 1, y: 0 }}
+        initial={{ opacity: 0, scale: 0.95 }}
+        animate={{ opacity: 1, scale: 1 }}
         transition={{ duration: 0.5 }}
-        className="relative z-10 w-full max-w-162.5 px-6"
+        className="relative z-10 w-full max-w-lg lg:max-w-xl px-4 md:px-6 py-12"
       >
-        <div className="bg-white/5 backdrop-blur-2xl border border-white/10 rounded-[2.5rem] p-8 sm:p-12 shadow-2xl relative overflow-hidden group">
+        <div className="bg-white/5 backdrop-blur-2xl border border-white/10 rounded-3xl md:rounded-[2.5rem] p-6 sm:p-14 shadow-2xl relative overflow-hidden group">
           <div className="absolute -bottom-24 -left-24 w-48 h-48 bg-red-600/10 rounded-full blur-[80px]" />
 
           <div className="text-center mb-8 relative z-10">
-            <h1 className="text-4xl sm:text-5xl font-black text-white italic tracking-tighter uppercase leading-[0.9]">
+            <h1 className="text-3xl sm:text-5xl font-black text-white italic tracking-tighter uppercase leading-[0.9]">
               Join the <span className="text-red-500">Family</span>
             </h1>
             <p className="text-gray-200 mt-4 font-medium tracking-wide text-sm sm:text-base opacity-80">
@@ -139,7 +139,7 @@ export default function SignUp() {
                     name="name"
                     required
                     placeholder="Full Name"
-                    className="w-full bg-white/5 border border-white/10 text-white pl-10 pr-4 py-3.5 rounded-2xl focus:outline-none focus:ring-2 focus:ring-red-600/40 focus:border-red-600 transition-all placeholder:text-gray-600 font-semibold text-sm"
+                    className="w-full bg-white/5 border border-white/10 text-sm md:text-base text-white pl-10 pr-4 py-3.5 md:py-4 rounded-xl md:rounded-2xl focus:outline-none focus:ring-2 focus:ring-red-600/40 focus:border-red-600 transition-all placeholder:text-gray-600 font-semibold"
                   />
                 </div>
               </div>
@@ -157,7 +157,7 @@ export default function SignUp() {
                     name="email"
                     required
                     placeholder="Email Address"
-                    className="w-full bg-white/5 border border-white/10 text-white pl-10 pr-4 py-3.5 rounded-2xl focus:outline-none focus:ring-2 focus:ring-red-600/40 focus:border-red-600 transition-all placeholder:text-gray-600 font-semibold text-sm"
+                    className="w-full bg-white/5 border border-white/10 text-sm md:text-base text-white pl-10 pr-4 py-3.5 md:py-4 rounded-xl md:rounded-2xl focus:outline-none focus:ring-2 focus:ring-red-600/40 focus:border-red-600 transition-all placeholder:text-gray-600 font-semibold"
                   />
                 </div>
               </div>
@@ -176,7 +176,7 @@ export default function SignUp() {
                   name="password"
                   required
                   placeholder="Create Secure Password"
-                  className="w-full bg-white/5 border border-white/10 text-white pl-10 pr-12 py-3.5 rounded-2xl focus:outline-none focus:ring-2 focus:ring-red-600/40 focus:border-red-600 transition-all placeholder:text-gray-600 font-semibold text-sm"
+                  className="w-full bg-white/5 border border-white/10 text-sm md:text-base text-white pl-10 pr-12 py-3.5 md:py-4 rounded-xl md:rounded-2xl focus:outline-none focus:ring-2 focus:ring-red-600/40 focus:border-red-600 transition-all placeholder:text-gray-600 font-semibold"
                 />
                 <button
                   type="button"
@@ -200,7 +200,7 @@ export default function SignUp() {
                   type="text"
                   name="photo"
                   placeholder="https://example.com/photo.jpg"
-                  className="w-full bg-white/5 border border-white/10 text-white pl-10 pr-4 py-3.5 rounded-2xl focus:outline-none focus:ring-2 focus:ring-red-600/40 focus:border-red-600 transition-all placeholder:text-gray-600 font-semibold text-sm"
+                  className="w-full bg-white/5 border border-white/10 text-sm md:text-base text-white pl-10 pr-4 py-3.5 md:py-4 rounded-xl md:rounded-2xl focus:outline-none focus:ring-2 focus:ring-red-600/40 focus:border-red-600 transition-all placeholder:text-gray-600 font-semibold"
                 />
               </div>
             </div>
@@ -210,7 +210,7 @@ export default function SignUp() {
               whileTap={{ scale: 0.98 }}
               disabled={loading}
               type="submit"
-              className="w-full bg-[#FFB200] hover:bg-[#e6a100] text-black py-4 rounded-2xl font-black uppercase tracking-widest shadow-xl shadow-[#FFB200]/20 transition-all flex items-center justify-center gap-2 group/btn h-14 mt-4"
+              className="w-full bg-[#FFB200] hover:bg-[#e6a100] text-black py-4 md:py-4.5 rounded-xl md:rounded-2xl font-black uppercase tracking-widest shadow-xl shadow-[#FFB200]/20 transition-all flex items-center justify-center gap-2 group/btn h-12 md:h-14 mt-4 text-sm md:text-base"
             >
               {loading ? (
                 <div className="w-5 h-5 border-2 border-black/30 border-t-black rounded-full animate-spin" />
@@ -236,7 +236,7 @@ export default function SignUp() {
             whileHover={{ scale: 1.02 }}
             whileTap={{ scale: 0.98 }}
             onClick={handleGoogleLogin}
-            className="w-full bg-white/5 hover:bg-white/10 border border-white/10 text-white py-4 rounded-2xl font-black transition-all flex items-center justify-center gap-3 backdrop-blur-sm shadow-xl"
+            className="w-full bg-white/5 hover:bg-white/10 border border-white/10 text-white py-3.5 md:py-4 rounded-xl md:rounded-2xl font-black transition-all flex items-center justify-center gap-3 backdrop-blur-sm shadow-xl text-sm md:text-base"
           >
             <svg width="18" height="18" viewBox="0 0 24 24">
               <path d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z" fill="#4285F4" />
@@ -247,7 +247,7 @@ export default function SignUp() {
             Sign Up with Google
           </motion.button>
 
-          <p className="text-center mt-10 text-gray-500 font-bold text-[10px] uppercase tracking-widest">
+          <p className="text-center mt-12 text-gray-500 font-bold text-xs uppercase tracking-widest">
             Member of the kitchen?{" "}
             <Link href="/login" className="text-red-600 hover:text-white transition-colors underline decoration-2 underline-offset-4 decoration-red-600/30 hover:decoration-red-600">
               Go to Login

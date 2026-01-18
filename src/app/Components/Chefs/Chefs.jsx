@@ -1,4 +1,5 @@
 "use client";
+
 import React from "react";
 import Image from "next/image";
 import { motion } from "framer-motion";
@@ -27,79 +28,93 @@ const chefs = [
 
 export default function Chefs() {
   return (
-    <section className="bg-white dark:bg-[#0a0a0a] py-16 md:py-28 transition-colors duration-300 overflow-hidden">
-      <div className="w-full md:w-10/12 px-4 md:px-8 mx-auto relative">
+    <section className="dark:bg-[#050505] py-20 md:py-25 transition-colors duration-500 overflow-hidden relative">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
 
-        {/* Background Decorative Elements */}
-        <div className="absolute -top-10 -right-10 w-64 h-64 bg-[#FFB200]/5 rounded-full blur-3xl pointer-events-none" />
-        <div className="absolute -bottom-10 -left-10 w-64 h-64 bg-red-600/5 rounded-full blur-3xl pointer-events-none" />
-
-        {/* Heading */}
-        <div className="text-center mb-16 md:mb-24 relative z-10">
+        <div className="text-center mb-10 md:mb-16 space-y-4">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.5 }}
-            className="flex items-center justify-center gap-2 text-[#FFB200] text-sm font-bold uppercase tracking-[0.2em] mb-4"
+            transition={{ duration: 0.6 }}
+            viewport={{ once: true }}
+            className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full text-[#FFB200] text-sm font-bold tracking-[0.2em] uppercase"
           >
-            <span className="w-8 h-px bg-[#FFB200]" />
-            <span>Our Specialist Chefs</span>
-            <span className="w-8 h-px bg-[#FFB200]" />
+            <span className="w-1.5 h-1.5 rounded-full  animate-pulse" />
+            Culinary Artists
           </motion.div>
 
           <motion.h2
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.5, delay: 0.1 }}
-            className="text-4xl md:text-5xl lg:text-6xl font-black text-gray-900 dark:text-white leading-[1.1] uppercase italic tracking-tighter"
+            transition={{ duration: 0.6, delay: 0.1 }}
+            viewport={{ once: true }}
+            className="text-4xl lg:text-5xl font-black text-slate-900 dark:text-white uppercase  leading-none"
           >
-            MEET OUR CULINARY <span className="text-red-600">MASTERS</span>
+            Masters of <span>Taste</span>
           </motion.h2>
+
+          <motion.p
+            initial={{ opacity: 0 }}
+            whileInView={{ opacity: 1 }}
+            transition={{ duration: 0.6, delay: 0.2 }}
+            viewport={{ once: true }}
+            className="max-w-2xl mx-auto text-slate-500 dark:text-slate-400 font-medium text-lg leading-relaxed"
+          >
+            Meet the visionaries behind every exquisite dish, blending tradition with modern culinary innovation.
+          </motion.p>
         </div>
 
-        {/* Chefs Grid */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8 md:gap-12 relative z-10">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 lg:gap-12">
           {chefs.map((chef, index) => (
             <motion.div
               key={index}
-              initial={{ opacity: 0, scale: 0.9 }}
-              whileInView={{ opacity: 1, scale: 1 }}
-              transition={{ duration: 0.5, delay: index * 0.1 }}
+              initial={{ opacity: 0, y: 40 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.7, delay: index * 0.15, ease: [0.21, 0.47, 0.32, 0.98] }}
               viewport={{ once: true }}
-              className="group relative flex flex-col items-center"
+              className="group relative"
             >
-              <div className="relative w-full aspect-[4/5] overflow-hidden rounded-3xl shadow-xl border border-gray-100 dark:border-gray-800">
-                <Image
-                  src={chef.image}
-                  alt={chef.name}
-                  fill
-                  className="object-cover transition-transform duration-700 group-hover:scale-110 grayscale group-hover:grayscale-0"
-                />
+              <div className="relative h-120 md:h-137.5 w-full rounded-[2.5rem] overflow-hidden bg-slate-200 dark:bg-zinc-900 shadow-xl dark:shadow-2xl transition-transform duration-500 group-hover:-translate-y-2">
 
-                {/* Social Overlay */}
-                <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center gap-3">
-                  {chef.socials.map((Icon, i) => (
-                    <motion.a
-                      key={i}
-                      href="#"
-                      whileHover={{ scale: 1.2, backgroundColor: "#FFB200" }}
-                      className="w-10 h-10 flex items-center justify-center rounded-full bg-white/20 backdrop-blur-md text-white transition-all border border-white/30"
-                    >
-                      <Icon className="text-sm" />
-                    </motion.a>
-                  ))}
+                <div className="absolute inset-0">
+                  <Image
+                    src={chef.image}
+                    alt={chef.name}
+                    fill
+                    className="object-cover transition-all duration-700 ease-out group-hover:scale-110 group-hover:grayscale-0 grayscale-0 sm:grayscale sm:group-hover:grayscale-0"
+                    sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+                  />
+                  <div className="absolute inset-0 bg-linear-to-t from-black/90 via-black/20 to-transparent opacity-80 transition-opacity duration-300 group-hover:opacity-90" />
                 </div>
-              </div>
 
-              {/* Info Box */}
-              <div className="relative -mt-10 bg-white dark:bg-[#141414] w-[85%] text-center p-6 rounded-2xl shadow-2xl border border-gray-100 dark:border-gray-800 transform transition-transform duration-300 group-hover:-translate-y-2">
-                <h4 className="text-xl font-extrabold text-gray-900 dark:text-white uppercase tracking-tight group-hover:text-red-600 transition-colors italic">
-                  {chef.name}
-                </h4>
-                <p className="text-sm text-gray-500 dark:text-gray-400 font-bold uppercase tracking-widest mt-1">
-                  {chef.role}
-                </p>
-                <div className="absolute -bottom-1 left-1/2 -translate-x-1/2 w-12 h-1 bg-[#FFB200] rounded-full opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+                <div className="absolute bottom-0 left-0 right-0 p-8 transform translate-y-4 group-hover:translate-y-0 transition-transform duration-500 ease-out">
+
+                  <div className="w-12 h-1 bg-[#FFB200] mb-6 transform origin-left scale-x-0 group-hover:scale-x-100 transition-transform duration-500 delay-100" />
+
+                  <h3 className="text-3xl font-black text-white uppercase italic tracking-wide mb-1 drop-shadow-lg">
+                    {chef.name}
+                  </h3>
+                  <p className="text-[#FFB200] font-bold uppercase tracking-[0.2em] text-xs mb-6 opacity-80">
+                    {chef.role}
+                  </p>
+
+                  <div className="flex items-center gap-3 opacity-0 group-hover:opacity-100 transform translate-y-4 group-hover:translate-y-0 transition-all duration-500 delay-200">
+                    {chef.socials.map((Icon, i) => (
+                      <a
+                        key={i}
+                        href="#"
+                        className="w-10 h-10 rounded-full bg-white/10 backdrop-blur-md border border-white/20 flex items-center justify-center text-white hover:bg-[#FFB200] hover:border-[#FFB200] hover:text-black transition-all duration-300"
+                        aria-label="Social Link"
+                      >
+                        <Icon size={14} />
+                      </a>
+                    ))}
+                  </div>
+                </div>
+
+                <div className="absolute top-6 right-6 w-12 h-12 rounded-full border border-white/20 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-all duration-500 rotate-45 group-hover:rotate-0">
+                  <div className="w-2 h-2 bg-[#FFB200] rounded-full" />
+                </div>
               </div>
             </motion.div>
           ))}

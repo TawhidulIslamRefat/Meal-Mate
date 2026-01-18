@@ -35,21 +35,13 @@ const features = [
 export default function WhyChooseUs() {
   const cardsRef = useRef([]);
 
-  useEffect(() => {
-    gsap.from(cardsRef.current, {
-      y: 40,
-      opacity: 0,
-      duration: 0.8,
-      stagger: 0.15,
-      ease: "power3.out",
-    });
-  }, []);
+
   return (
-    <section className="bg-white py-25">
-      <div className="container mx-auto px-6 text-center">
+    <section className="bg-white dark:bg-[#0a0a0a] py-25 transition-colors duration-500">
+      <div className="w-full md:w-10/12  mx-auto px-4 md:px-8 text-center">
         <p className="text-[#FFB200]  font-semibold mb-3">WHY CHOOSE US</p>
 
-        <h2 className="text-4xl lg:text-5xl font-extrabold mb-16">
+        <h2 className="text-4xl lg:text-5xl font-extrabold mb-16 text-gray-900 dark:text-white transition-colors">
           WHY WE&apos;RE YOUR BEST CHOICE
         </h2>
 
@@ -60,20 +52,20 @@ export default function WhyChooseUs() {
               ref={(el) => (cardsRef.current[index] = el)}
               whileHover={{ y: -8 }}
               transition={{ duration: 0.3 }}
-              className="group rounded-2xl px-8 py-12 shadow-sm cursor-pointer mx-auto hover:bg-[#D61C1C] hover:text-white"
-              
-            >
-             <Image src={item.icon} alt="picture" 
-             width={220}
-             height={50}
-             className="mx-auto mb-5"
-             />
+              className="group rounded-2xl px-8 py-12 shadow-sm cursor-pointer mx-auto hover:bg-[#D61C1C] hover:text-white bg-white dark:bg-white/5 border border-transparent dark:border-white/5 transition-all"
 
-              <h3 className="text-xl font-bold text-gray-900 mb-3 group-hover:text-gray-100">
+            >
+              <Image src={item.icon} alt="picture"
+                width={220}
+                height={50}
+                className="mx-auto mb-5 rounded-lg"
+              />
+
+              <h3 className="text-xl font-bold text-gray-900 dark:text-white mb-3 group-hover:text-gray-100 transition-colors">
                 {item.title}
               </h3>
 
-              <p className="text-gray-500 text-sm leading-relaxed font-semibold group-hover:text-gray-100">
+              <p className="text-gray-500 dark:text-gray-400 text-sm leading-relaxed font-semibold group-hover:text-gray-100 transition-colors">
                 {item.desc}
               </p>
             </motion.div>

@@ -20,7 +20,7 @@ const testimonials = [
     name: "Sophia Turner",
     role: "Manager",
     image: "https://i.pravatar.cc/100?img=32",
-    text: "Absolutely wonderful experience. The staff was attentive and knowledgeable. Every dish felt fresh and carefully prepared.",
+    text: "Absolutely wonderful experience. The staff was attentive. Every dish felt fresh and carefully prepared.",
   },
   {
     id: 3,
@@ -54,13 +54,13 @@ const testimonials = [
 
 export default function Testimonials() {
   return (
-    <section className="bg-[#f8f1e4] py-20">
-      <div className="w-full md:w-10/12 mx-auto px-4">
-        <div className="text-center mb-16">
+    <section className="bg-[#f8f1e4] dark:bg-[#0a0a0a] py-10 md:py-20 transition-colors duration-500">
+      <div className="w-full md:w-10/12 mx-auto px-4 md:px-8">
+        <div className="text-center mb-10">
           <div className="flex items-center justify-center gap-2 text-[#FFB200]  text-sm font-semibold uppercase mb-3">
             <span>Testimonials</span>
           </div>
-          <h2 className="text-4xl md:text-5xl font-extrabold text-gray-900">
+          <h2 className="text-4xl md:text-5xl font-extrabold text-gray-900 dark:text-white transition-colors">
             OUR GUESTS ARE SAYING
           </h2>
         </div>
@@ -87,18 +87,15 @@ export default function Testimonials() {
         >
           {testimonials.map((item) => (
             <SwiperSlide key={item.id} className="h-auto">
-              <div className="bg-white p-8 rounded-xl border border-gray-100 h-full flex flex-col">
-                {/* Stars */}
+              <div className="bg-white dark:bg-white/5 p-8 rounded-xl border border-gray-100 dark:border-white/5 h-full flex flex-col transition-colors">
                 <div className="flex gap-1 text-orange-400 text-lg mb-4">
                   ★★★★★
                 </div>
 
-                {/* Text (takes remaining height) */}
-                <p className="text-gray-600 leading-relaxed mb-8 flex-1">
+                <p className="text-gray-600 dark:text-gray-300 leading-relaxed mb-8 flex-1 transition-colors">
                   {item.text}
                 </p>
 
-                {/* Bottom fixed */}
                 <div className="flex items-center justify-between mt-auto">
                   <div className="flex items-center gap-4">
                     <Image
@@ -109,10 +106,10 @@ export default function Testimonials() {
                       className="rounded-full object-cover"
                     />
                     <div>
-                      <h4 className="font-semibold text-gray-900">
+                      <h4 className="font-semibold text-gray-900 dark:text-white transition-colors">
                         {item.name}
                       </h4>
-                      <p className="text-sm text-gray-500">{item.role}</p>
+                      <p className="text-sm text-gray-500 dark:text-gray-400 transition-colors">{item.role}</p>
                     </div>
                   </div>
 
