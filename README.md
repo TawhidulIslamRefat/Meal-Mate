@@ -1,36 +1,40 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# 🍽️ Meal Mate — AI Powered Food Assistant
 
-## Getting Started
+Meal Mate is a modern AI-powered web application that helps users discover recipes, plan meals, and make smarter food decisions based on available ingredients. The goal of this project is to simplify everyday cooking with the help of AI and a clean, user-friendly interface.
 
-First, run the development server:
+🌐 **Live Website:** https://meal-mate-eight-peach.vercel.app/
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+---
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## ✨ Features
 
-You can start editing the page by modifying `app/page.js`. The page auto-updates as you edit the file.
+- 🤖 AI-based recipe suggestions  
+- 🥗 Ingredient-based meal ideas  
+- 📝 Simple and intuitive meal planning  
+- ⚡ Fast, responsive, and user-friendly UI  
+- 🎨 Modern design with optimized fonts  
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+---
 
-## Learn More
+## 🛠️ Tech Stack
 
-To learn more about Next.js, take a look at the following resources:
+- **Framework:** Next.js (App Router)  
+- **Language:** JavaScript  
+- **Styling:** Tailwind CSS  
+- **Fonts:** Geist (via `next/font`)  
+- **Deployment:** Vercel  
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+---
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+## 🖼️ Screenshots
 
-## Deploy on Vercel
+<p align="center">
+  <img src="https://i.ibb.co.com/YMdmP3f/Screenshot-2026-01-21-192925.png" width="48%" />
+  <img src="https://i.ibb.co.com/TBKcLVhm/Screenshot-2026-01-21-192826.png" width="48%" />
+</p>
+<p align="center">
+  <img src="https://i.ibb.co.com/tprSh2PN/Screenshot-2026-01-21-193139.png" width="48%" />
+  <img src="https://i.ibb.co.com/NdHhNd4j/Screenshot-2026-01-21-193014.png" width="48%" />
+</p>
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+---
