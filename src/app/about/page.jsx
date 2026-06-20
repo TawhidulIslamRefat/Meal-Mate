@@ -65,7 +65,7 @@ export default function AboutPage() {
             <div className="flex items-center gap-4">
               <div className="w-16 h-16 rounded-full bg-gray-200 dark:bg-zinc-800 overflow-hidden relative">
                 <Image
-                  src="https://images.unsplash.com/photo-1583394293214-28ded15ee548?q=80&w=2080&auto=format&fit=crop"
+                  src="https://png.pngtree.com/png-clipart/20250111/original/pngtree-a-chef-holding-hamburger-and-fries-png-image_20111871.png"
                   fill
                   className="object-cover"
                   alt="Founder"
@@ -91,7 +91,7 @@ export default function AboutPage() {
           >
             <div className="relative z-10 rounded-[2.5rem] overflow-hidden shadow-2xl rotate-3 hover:rotate-0 transition-transform duration-500 border-4 border-white dark:border-white/5">
               <Image
-                src="https://images.stockcake.com/public/f/b/1/fb19e250-2549-4daf-a880-179538d0f7f2_large/chef-cooking-flambe-stockcake.jpg"
+                src="https://static.vecteezy.com/system/resources/previews/033/692/644/large_2x/chef-preparing-food-in-the-kitchen-at-the-restaurant-professional-chef-cooking-gourmet-chef-cooking-in-a-commercial-kitchen-ai-generated-free-photo.jpg"
                 alt="Chefs Cooking"
                 width={800}
                 height={600}
